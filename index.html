@@ -2078,7 +2078,7 @@
 
     // ================= Data Store & System Version Lifecycle =================
     // Whenever a new system generation is released, update SYSTEM_VERSION to auto-purge legacy stored data
-    const SYSTEM_VERSION = "v28_smooth_unconstrained_modal_scroll";
+    const SYSTEM_VERSION = "v29_fix_table_render_runtime_is_po";
     const VERSION_STORAGE_KEY = "mitsukin_pms_current_system_version";
     const STORAGE_KEY = "mitsukin_pms_projects_" + SYSTEM_VERSION;
     const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_" + SYSTEM_VERSION;
@@ -3183,6 +3183,7 @@
           const isManualDraft = (stage && (stage.includes("说明书草稿") || stage.includes("取説草案") || stage.includes("取扱説明書草稿") || stage.includes("说明书") || stage.includes("取扱説明書"))) && (name && (name.includes("说明书") || name.includes("取説") || name.includes("草稿") || name.includes("草案")));
           const isPackagingDieline = (stage && (stage.includes("彩盒外箱刀模") || stage.includes("刀模") || stage.includes("抜型") || stage.includes("包材図面"))) || (name && (name.includes("刀模") || name.includes("抜型") || name.includes("外箱箱规") || name.includes("包装结构")));
           const isTestReport = isTestReportMilestone(m);
+          const isPo = isPoMilestone(m);
 
           let stageBadge = "";
           if (isStage1) {
