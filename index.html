@@ -190,12 +190,12 @@
     <div class="bg-indigo-900 text-white rounded-2xl p-5 shadow-sm space-y-3">
       <div class="flex items-center justify-between text-xs font-bold text-indigo-200">
         <span class="flex items-center gap-2" id="sopBannerTitle">
-          <span>📌</span> 三金商事・标准产品生命周期全链路（11 大严密节点・至消费者发货）
+          <span>📌</span> 三金商事・标准产品生命周期全链路（12 大严密节点・至消费者发货）
         </span>
         <span class="bg-indigo-800 text-indigo-200 px-2.5 py-0.5 rounded text-[11px]" id="sopBannerBadge">公司统一研发标准流程</span>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-2 text-[11px] text-center pt-1 font-medium" id="sopStepsGrid">
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-2 text-[11px] text-center pt-1 font-medium" id="sopStepsGrid">
         <!-- Rendered via JS -->
       </div>
     </div>
@@ -1686,7 +1686,7 @@
         btnLock: "锁屏",
         btnBackup: "备份",
         btnReset: "重置系统",
-        sopBannerTitle: "三金商事・标准产品生命周期全链路（11 大严密节点・至消费者发货）",
+        sopBannerTitle: "三金商事・标准产品生命周期全链路（12 大严密节点・至消费者发货）",
         sopBannerBadge: "公司统一研发标准流程",
         kpiLabelTotal: "当前产品线总数",
         kpiLabelTotalProfit: "全项目界限利润总额 (Marginal Profit)",
@@ -1701,8 +1701,8 @@
         kpiLabelEarliest: "最快网页上架项目",
         kpiSubEarliest: "SP-BC122/127 (11月Makuake)",
         kpiLabelAvg: "平均业务完成率",
-        kpiSubAvg: "11大节点严密把控中",
-        portfolioHeaderTitle: "正在推进的产品矩阵（按住 ⠿ 可拖拽自由排序；点击卡片进入 10 步流程；点击 ✏️ 修改信息）",
+        kpiSubAvg: "12大节点严密把控中",
+        portfolioHeaderTitle: "正在推进的产品矩阵（按住 ⠿ 可拖拽自由排序；点击卡片进入 12 步流程；点击 ✏️ 修改信息）",
         portfolioHeaderSub: "支持卡片拖拽自定义排序 · 自动记忆",
         btnResetOrder: "恢复默认顺序",
         dragHandleTip: "按住拖拽卡片自由排序",
@@ -1786,7 +1786,7 @@
         btnLock: "ロック",
         btnBackup: "バックアップ",
         btnReset: "リセット",
-        sopBannerTitle: "株式会社三金商事・標準製品ライフサイクル全工程（11大重要マイルストーン・顧客納品まで）",
+        sopBannerTitle: "株式会社三金商事・標準製品ライフサイクル全工程（12大重要マイルストーン・顧客納品まで）",
         sopBannerBadge: "全社共通開発SOP基準",
         kpiLabelTotal: "推進中プロジェクト総数",
         kpiLabelTotalProfit: "全案件・限界利益総額 (税抜合計)",
@@ -1801,8 +1801,8 @@
         kpiLabelEarliest: "最短販売開始予定",
         kpiSubEarliest: "SP-BC122/127 (11月Makuake公開)",
         kpiLabelAvg: "平均プロジェクト進捗率",
-        kpiSubAvg: "11大工程を厳格管理中",
-        portfolioHeaderTitle: "開発推進中製品ポートフォリオ（⠿をドラッグして並替可能；カードクリックで11大工程へ；✏️で情報編集）",
+        kpiSubAvg: "12大工程を厳格管理中",
+        portfolioHeaderTitle: "開発推進中製品ポートフォリオ（⠿をドラッグして並替可能；カードクリックで12大工程へ；✏️で情報編集）",
         portfolioHeaderSub: "ドラッグ＆ドロップ並替対応・自動保存",
         btnResetOrder: "デフォルト順に戻す",
         dragHandleTip: "ドラッグして表示順を変更",
@@ -1865,7 +1865,7 @@
       }
     };
 
-    // Standard 9-Step SOP Definitions (Bilingual)
+    // Standard 12-Step SOP Definitions (Bilingual)
     const SOP_STEPS = [
       { id: 1, zhTitle: "① 新产品发布", zhSub: "初样/初价/卖点", jaTitle: "① 新製品発表", jaSub: "初試作/概算価格/訴求点", color: "bg-indigo-800/80 border-indigo-700" },
       { id: 2, zhTitle: "② 新产品定义", zhSub: "95%规格/报价", jaTitle: "② 新製品定義", jaSub: "95%仕様FIX/確定見積", color: "bg-indigo-800/80 border-indigo-700" },
@@ -1875,9 +1875,10 @@
       { id: 6, zhTitle: "⑥ 并行包材", zhSub: "彩盒/外箱/取说", jaTitle: "⑥ 並行包材", jaSub: "化粧箱/外箱/取説", color: "bg-amber-600/80 border-amber-500 font-bold" },
       { id: 7, zhTitle: "⑦ 网页上架", zhSub: "众筹/电商上线", jaTitle: "⑦ 販売開始", jaSub: "クラファン/EC公開", color: "bg-indigo-800/80 border-indigo-700" },
       { id: 8, zhTitle: "⑧ 网红视频", zhSub: "测评引流爆发", jaTitle: "⑧ 動画公開", jaSub: "KOLレビュー拡散", color: "bg-indigo-800/80 border-indigo-700" },
-      { id: 9, zhTitle: "⑨ 工厂交期", zhSub: "大货完成出厂", jaTitle: "⑨ 工場量産完了", jaSub: "出荷前OQC合格", color: "bg-indigo-800/80 border-indigo-700" },
-      { id: 10, zhTitle: "⑩ 到京东仓库", zhSub: "验收入库", jaTitle: "⑩ 京東倉庫納品", jaSub: "受入検収完了", color: "bg-emerald-600/80 border-emerald-500 font-bold" },
-      { id: 11, zhTitle: "⑪ 消费者发货", zhSub: "全流程闭环", jaTitle: "⑪ 顧客・支援者発送", jaSub: "リターン配送完了", color: "bg-purple-600/80 border-purple-500 font-bold" }
+      { id: 9, zhTitle: "⑨ 企划验货标准", zhSub: "出具提供验货员", jaTitle: "⑨ 検品基準作成", jaSub: "企画→検品員引渡", color: "bg-indigo-800/80 border-indigo-700" },
+      { id: 10, zhTitle: "⑩ 工厂交期", zhSub: "大货完成出厂", jaTitle: "⑩ 工場量産完了", jaSub: "出荷前OQC合格", color: "bg-indigo-800/80 border-indigo-700" },
+      { id: 11, zhTitle: "⑪ 到京东仓库", zhSub: "验收入库", jaTitle: "⑪ 京東倉庫納品", jaSub: "受入検収完了", color: "bg-emerald-600/80 border-emerald-500 font-bold" },
+      { id: 12, zhTitle: "⑫ 消费者发货", zhSub: "全流程闭环", jaTitle: "⑫ 顧客・支援者発送", jaSub: "リターン配送完了", color: "bg-purple-600/80 border-purple-500 font-bold" }
     ];
 
     const STAGE_SELECT_OPTIONS = [
@@ -1893,9 +1894,10 @@
       { zh: "6. 并行：说明书定稿与最晚印刷时间", ja: "6. 並行：取扱説明書最終FIX・最晩印刷FIX" },
       { zh: "7. 网页正式上架发售", ja: "7. WEB販売ページ公開" },
       { zh: "8. 网红测评视频发布", ja: "8. インフルエンサー動画公開" },
-      { zh: "9. 工厂大货交期", ja: "9. 工場量産完了・OQC" },
-      { zh: "10. 货到京东仓库", ja: "10. 京東倉庫正式納品完了" },
-      { zh: "11. 消费者发货时间", ja: "11. 支援者・顧客発送(リターン配送)" }
+      { zh: "9. 企划出具验货报告与标准", ja: "9. 企画検品基準・レポート作成(検品員へ提供)" },
+      { zh: "10. 工厂大货交期", ja: "10. 工場量産完了・OQC" },
+      { zh: "11. 货到京东仓库", ja: "11. 京東倉庫正式納品完了" },
+      { zh: "12. 消费者发货时间", ja: "12. 支援者・顧客発送(リターン配送)" }
     ];
 
     function getLangText(obj, field) {
@@ -1939,9 +1941,10 @@
           { id: 9, stage_zh: "6. 并行：说明书定稿与最晚印刷时间", stage_ja: "6. 並行：取扱説明書最終FIX・最晩印刷FIX", name_zh: "说明书定审与日文排版最晚印刷时间", name_ja: "取扱説明書日本語校正＆最晩印刷FIX", plan: "待定", actual: "", owner_zh: "包装设计", owner_ja: "パッケージ設計", deliverable_zh: "说明书日文定稿印刷版(PDF)", deliverable_ja: "取扱説明書日本語最終印刷データ(PDF)", status: "pending", larkUrl: "" },
           { id: 9, stage_zh: "7. 网页正式上架发售", stage_ja: "7. WEB販売ページ公開", name_zh: "网页正式上架(乐天/雅虎/亚马逊正式发售)", name_ja: "WEB販売ページ公開（楽天/Yahoo/Amazon販売開始）", plan: "待定", actual: "", owner_zh: "电商运营", owner_ja: "EC運用", deliverable_zh: "乐天/亚马逊正式Listing上线", deliverable_ja: "モール本番Listing公開", status: "pending" },
           { id: 10, stage_zh: "8. 网红测评视频发布", stage_ja: "8. インフルエンサー動画公開", name_zh: "网红评测视频与社交媒体内容集中发布引流", name_ja: "インフルエンサーレビュー動画公開・拡散", plan: "待定", actual: "", owner_zh: "营销推广", owner_ja: "マーケティング", deliverable_zh: "Youtube/TikTok视频上线", deliverable_ja: "YouTube/TikTokレビュー動画配信", status: "pending" },
-          { id: 11, stage_zh: "9. 工厂大货交期", stage_ja: "9. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂OQC检验", name_ja: "工場量産完了・出荷前OQC全数抜き取り検査合格", plan: "待定", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货质检合格单+出厂报告", deliverable_ja: "量産出荷検査合格票＋出荷報告書", status: "pending" },
-          { id: 12, stage_zh: "10. 货到京东仓库", stage_ja: "10. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "通関完了・京東倉庫正式納品完了", plan: "待定", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫正規入庫完了書", status: "pending" },
-          { id: 13, stage_zh: "11. 消费者发货时间", stage_ja: "11. 支援者・顧客発送", name_zh: "首批订单出库发货，日本消费者快递派送完毕", name_ja: "佐川・ヤマト一斉出荷、エンドユーザー配送完了", plan: "待定", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "佐川/黑猫快递单号全部回传完毕", deliverable_ja: "全注文伝票番号反映・配送完了報告", status: "pending" }
+          { id: 14, stage_zh: "9. 企划出具验货报告与标准", stage_ja: "9. 企画検品基準・レポート作成", name_zh: "企划编制出厂验货报告与验收标准，交付现场验货员", name_ja: "企画による出荷前検品レポート・検品基準書の作成、検品員へ提供", plan: "待定", actual: "", owner_zh: "企划部", owner_ja: "企画部", deliverable_zh: "《出厂验货报告与标准判定书》(外观/冷暖温控/包装贴标/AQL标准)", deliverable_ja: "《出荷前検品基準レポート》（外観・冷温機能・梱包ラベル判定基準）", status: "pending", larkUrl: "" },
+          { id: 11, stage_zh: "10. 工厂大货交期", stage_ja: "10. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂OQC检验", name_ja: "工場量産完了・出荷前OQC全数抜き取り検査合格", plan: "待定", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货质检合格单+出厂报告", deliverable_ja: "量産出荷検査合格票＋出荷報告書", status: "pending" },
+          { id: 12, stage_zh: "11. 货到京东仓库", stage_ja: "11. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "通関完了・京東倉庫正式納品完了", plan: "待定", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫正規入庫完了書", status: "pending" },
+          { id: 13, stage_zh: "12. 消费者发货时间", stage_ja: "12. 支援者・顧客発送", name_zh: "首批订单出库发货，日本消费者快递派送完毕", name_ja: "佐川・ヤマト一斉出荷、エンドユーザー配送完了", plan: "待定", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "佐川/黑猫快递单号全部回传完毕", deliverable_ja: "全注文伝票番号反映・配送完了報告", status: "pending" }
         ]
       },
 
@@ -1976,9 +1979,10 @@
           { id: 9, stage_zh: "6. 并行：说明书定稿与最晚印刷时间", stage_ja: "6. 並行：取扱説明書最終FIX・最晩印刷FIX", name_zh: "说明书定审与日文排版最晚印刷时间", name_ja: "取扱説明書日本語校正＆最晩印刷FIX", plan: "待定", actual: "", owner_zh: "包装设计", owner_ja: "パッケージ設計", deliverable_zh: "说明书日文定稿印刷版(PDF)", deliverable_ja: "取扱説明書日本語最終印刷データ(PDF)", status: "pending", larkUrl: "" },
           { id: 9, stage_zh: "7. 网页上架的时间", stage_ja: "7. WEB販売ページ公開", name_zh: "网页正式上架(Makuake众筹开售 / 电商上架)", name_ja: "Makuakeクラウドファンディング先行公開", plan: "待定", actual: "", owner_zh: "日本团队", owner_ja: "日本チーム", deliverable_zh: "正式发售上线", deliverable_ja: "Makuakeプロジェクト公開完了", status: "pending" },
           { id: 10, stage_zh: "8. 网红视频发布时间", stage_ja: "8. インフルエンサー動画公開", name_zh: "网红评测视频与社交媒体内容集中发布引流", name_ja: "インフルエンサー実車始動動画公開・拡散", plan: "待定", actual: "", owner_zh: "营销推广", owner_ja: "マーケティング", deliverable_zh: "全网测评视频爆发", deliverable_ja: "各種SNS実証動画一斉配信", status: "pending" },
-          { id: 11, stage_zh: "9. 工厂交期", stage_ja: "9. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・OQC検査合格", plan: "待定", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货出厂检验单", deliverable_ja: "量産出荷検査成績書", status: "pending" },
-          { id: 12, stage_zh: "10. 货到京东仓库的时间", stage_ja: "10. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "通関完了・京東倉庫正式納品完了", plan: "待定", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫入庫完了証", status: "pending" },
-          { id: 13, stage_zh: "11. 消费者发货时间", stage_ja: "11. 支援者・顧客発送", name_zh: "众筹回报订单正式发货，交付终端口碑", name_ja: "Makuakeリターン一斉出荷、支援者への納品完了", plan: "待定", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "众筹订单全部发货出库单", deliverable_ja: "クラファンリターン発送完了報告", status: "pending" }
+          { id: 14, stage_zh: "9. 企划出具验货报告与标准", stage_ja: "9. 企画検品基準・レポート作成", name_zh: "企划编制出厂验货报告与验收标准，交付现场验货员", name_ja: "企画による出荷前検品レポート・検品基準書の作成、検品員へ提供", plan: "待定", actual: "", owner_zh: "企划部", owner_ja: "企画部", deliverable_zh: "《出厂验货报告与标准判定书》(外观/打火倍率/包装贴标/AQL标准)", deliverable_ja: "《出荷前検品基準レポート》（外観・始動倍率・梱包ラベル判定基準）", status: "pending", larkUrl: "" },
+          { id: 11, stage_zh: "10. 工厂交期", stage_ja: "10. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・OQC検査合格", plan: "待定", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货出厂检验单", deliverable_ja: "量産出荷検査成績書", status: "pending" },
+          { id: 12, stage_zh: "11. 货到京东仓库的时间", stage_ja: "11. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "通関完了・京東倉庫正式納品完了", plan: "待定", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫入庫完了証", status: "pending" },
+          { id: 13, stage_zh: "12. 消费者发货时间", stage_ja: "12. 支援者・顧客発送", name_zh: "众筹回报订单正式发货，交付终端口碑", name_ja: "Makuakeリターン一斉出荷、支援者への納品完了", plan: "待定", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "众筹订单全部发货出库单", deliverable_ja: "クラファンリターン発送完了報告", status: "pending" }
         ]
       },
 
@@ -2013,9 +2017,10 @@
           { id: 7, stage_zh: "6. 并行：说明书定稿与最晚印刷时间", stage_ja: "6. 並行：取扱説明書最終FIX・最晩印刷FIX", name_zh: "说明书定审：2A摩托专用与7A汽车款说明书日文核对与最晚印刷排期", name_ja: "2Aバイク専用＆7A自動車全彩モデル取説日本語校正・最晩印刷FIX", plan: "2026/11/23", actual: "", owner_zh: "企划/设计", owner_ja: "企画/デザイン", deliverable_zh: "2A/7A说明书日文最终核对印刷版(PDF)", deliverable_ja: "2A/7A取扱説明書日本語最終FIX印刷版(PDF)", status: "ongoing", larkUrl: "" },
           { id: 11, stage_zh: "7. 网页上架的时间", stage_ja: "7. WEB販売ページ公開", name_zh: "网页正式上架(Makuake众筹开售 / 电商上架)", name_ja: "Makuakeクラウドファンディング正式公開・予約開始", plan: "2026/11/25", actual: "", owner_zh: "运营", owner_ja: "運用", deliverable_zh: "Makuake 众筹项目正式公开开售", deliverable_ja: "Makuakeプロジェクト公開・販売開始", status: "pending" },
           { id: 12, stage_zh: "8. 网红视频发布时间", stage_ja: "8. インフルエンサー動画公開", name_zh: "网红评测视频与社交媒体内容集中发布引流", name_ja: "インフルエンサー検証動画一斉公開・SNS拡散", plan: "2026/11/26", actual: "", owner_zh: "PR", owner_ja: "PR/広報", deliverable_zh: "日本博主视频上线+SNS推广", deliverable_ja: "YouTube動画公開＋SNSプロモーション", status: "pending" },
-          { id: 13, stage_zh: "9. 工厂交期", stage_ja: "9. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・168hエージング検査合格", plan: "2026/12/15", actual: "", owner_zh: "采购", owner_ja: "調達/購買", deliverable_zh: "首批大货出厂质检验收单", deliverable_ja: "初回ロット出荷前OQC検査合格書", status: "pending" },
-          { id: 14, stage_zh: "10. 货到京东仓库的时间", stage_ja: "10. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "日本通関完了・京東海外倉庫正式入庫完了", plan: "2026/12/28", actual: "", owner_zh: "采购", owner_ja: "調達/物流", deliverable_zh: "京东海外仓完成验收入库", deliverable_ja: "京東海外倉庫受入検査完了証", status: "pending" },
-          { id: 15, stage_zh: "11. 消费者发货时间", stage_ja: "11. 支援者・顧客発送", name_zh: "Makuake众筹回报订单与首批现货正式发货给车主", name_ja: "Makuake支援者リターン発送開始・一般出荷開始", plan: "2027/01/08", actual: "", owner_zh: "运营", owner_ja: "国内発送/運用", deliverable_zh: "佐川/黑猫快递全部发出，发货率100%", deliverable_ja: "ヤマト・佐川国内発送伝票100%完了", status: "pending" }
+          { id: 16, stage_zh: "9. 企划出具验货报告与标准", stage_ja: "9. 企画検品基準・レポート作成", name_zh: "企划编制出厂验货报告与验收标准，交付现场验货员", name_ja: "企画による出荷前検品レポート・検品基準書の作成、検品員へ提供", plan: "2026/12/05", actual: "", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "《2A/7A出厂验货标准报告》(外观/电性/双插头/包装箱唛判定标准)", deliverable_ja: "《2A/7A出荷前検品基準レポート》（外観・電気性能・梱包ラベル判定基準）", status: "pending", larkUrl: "" },
+          { id: 13, stage_zh: "10. 工厂交期", stage_ja: "10. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・168hエージング検査合格", plan: "2026/12/15", actual: "", owner_zh: "采购", owner_ja: "調達/購買", deliverable_zh: "首批大货出厂质检验收单", deliverable_ja: "初回ロット出荷前OQC検査合格書", status: "pending" },
+          { id: 14, stage_zh: "11. 货到京东仓库的时间", stage_ja: "11. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "日本通関完了・京東海外倉庫正式入庫完了", plan: "2026/12/28", actual: "", owner_zh: "采购", owner_ja: "調達/物流", deliverable_zh: "京东海外仓完成验收入库", deliverable_ja: "京東海外倉庫受入検査完了証", status: "pending" },
+          { id: 15, stage_zh: "12. 消费者发货时间", stage_ja: "12. 支援者・顧客発送", name_zh: "Makuake众筹回报订单与首批现货正式发货给车主", name_ja: "Makuake支援者リターン発送開始・一般出荷開始", plan: "2027/01/08", actual: "", owner_zh: "运营", owner_ja: "国内発送/運用", deliverable_zh: "佐川/黑猫快递全部发出，发货率100%", deliverable_ja: "ヤマト・佐川国内発送伝票100%完了", status: "pending" }
         ]
       },
 
@@ -2049,9 +2054,10 @@
           { id: 7, stage_zh: "6. 并行：说明书定稿与最晚印刷时间", stage_ja: "6. 並行：取扱説明書最終FIX・最晩印刷FIX", name_zh: "10A说明书定审与日文排版最晚印刷时间", name_ja: "10A取扱説明書日本語校正＆最晩印刷FIX", plan: "待定", actual: "", owner_zh: "包装设计/运营", owner_ja: "パッケージ設計/運用", deliverable_zh: "10A说明书日文定稿印刷版(PDF)", deliverable_ja: "10A取扱説明書日本語最終印刷データ(PDF)", status: "pending", larkUrl: "" },
           { id: 11, stage_zh: "7. 网页上架的时间", stage_ja: "7. WEB販売ページ公開", name_zh: "网页正式上架(Makuake众筹开售 / 电商上架)", name_ja: "Makuakeクラウドファンディング正式公開", plan: "待定", actual: "", owner_zh: "日本团队", owner_ja: "日本チーム", deliverable_zh: "众筹公开上线链接", deliverable_ja: "Makuake先行予約受付開始", status: "pending" },
           { id: 12, stage_zh: "8. 网红视频发布时间", stage_ja: "8. インフルエンサー動画公開", name_zh: "网红评测视频与社交媒体内容集中发布引流", name_ja: "キャンピングカー実車レビュー動画公開・SNS拡散", plan: "待定", actual: "", owner_zh: "营销推广", owner_ja: "マーケティング", deliverable_zh: "房车博主实测大片发布", deliverable_ja: "YouTubeレビュー動画配信", status: "pending" },
-          { id: 13, stage_zh: "9. 工厂交期", stage_ja: "9. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・出荷前OQC検査合格", plan: "待定", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货出厂检验单", deliverable_ja: "出荷前品質検査成績書", status: "pending" },
-          { id: 14, stage_zh: "10. 货到京东仓库的时间", stage_ja: "10. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "通関完了・京東海外倉庫正式入庫完了", plan: "待定", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东海外仓正品入库单", deliverable_ja: "京東倉庫受入完了証", status: "pending" },
-          { id: 15, stage_zh: "11. 消费者发货时间", stage_ja: "11. 支援者・顧客発送", name_zh: "房车/户外大电瓶首批订单发运消费者完结", name_ja: "キャンピングカーユーザー向け出荷完了", plan: "待定", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "终端交付签收单", deliverable_ja: "出荷完了受領書", status: "pending" }
+          { id: 16, stage_zh: "9. 企划出具验货报告与标准", stage_ja: "9. 企画検品基準・レポート作成", name_zh: "企划编制出厂验货报告与验收标准，交付现场验货员", name_ja: "企画による出荷前検品レポート・検品基準書の作成、検品員へ提供", plan: "待定", actual: "", owner_zh: "企划/QA", owner_ja: "企画/QA", deliverable_zh: "《10A出厂验货报告与标准判定书》(外观/大电流温升/包装/AQL标准)", deliverable_ja: "《10A出荷前検品基準レポート》（外観・大電流温昇・梱包判定基準）", status: "pending", larkUrl: "" },
+          { id: 13, stage_zh: "10. 工厂交期", stage_ja: "10. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・出荷前OQC検査合格", plan: "待定", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货出厂检验单", deliverable_ja: "出荷前品質検査成績書", status: "pending" },
+          { id: 14, stage_zh: "11. 货到京东仓库的时间", stage_ja: "11. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "通関完了・京東海外倉庫正式入庫完了", plan: "待定", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东海外仓正品入库单", deliverable_ja: "京東倉庫受入完了証", status: "pending" },
+          { id: 15, stage_zh: "12. 消费者发货时间", stage_ja: "12. 支援者・顧客発送", name_zh: "房车/户外大电瓶首批订单发运消费者完结", name_ja: "キャンピングカーユーザー向け出荷完了", plan: "待定", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "终端交付签收单", deliverable_ja: "出荷完了受領書", status: "pending" }
         ]
       }
     };
@@ -2070,15 +2076,16 @@
         { id: 7, stage_zh: "6. 并行：说明书定稿与最晚印刷时间", stage_ja: "6. 並行：取扱説明書最終FIX・最晩印刷FIX", name_zh: "说明书定审：中日双语/PL法合规审查及印刷最晚定稿排期", name_ja: "取扱説明書日本語校正・PL法準拠審査・最晩印刷FIX", plan: "第 11 周", actual: "", owner_zh: "包装设计/运营", owner_ja: "パッケージ設計/運用", deliverable_zh: "说明书日文定稿印刷版(PDF)", deliverable_ja: "取扱説明書日本語最終印刷データ(PDF)", status: "pending", larkUrl: "" },
         { id: 11, stage_zh: "7. 网页上架的时间", stage_ja: "7. WEB販売ページ公開", name_zh: "网页正式上架(Makuake众筹开售 / 电商上架)", name_ja: "WEB販売ページ公開（Makuake/モール販売開始）", plan: "第 12 周", actual: "", owner_zh: "日本团队", owner_ja: "日本チーム", deliverable_zh: "正式发售上线", deliverable_ja: "正式販売ページ公開完了", status: "pending" },
         { id: 12, stage_zh: "8. 网红视频发布时间", stage_ja: "8. インフルエンサー動画公開", name_zh: "网红评测视频与社交媒体内容集中发布引流", name_ja: "インフルエンサーレビュー動画公開・拡散", plan: "第 13 周", actual: "", owner_zh: "营销推广", owner_ja: "マーケティング", deliverable_zh: "全网测评视频爆发", deliverable_ja: "YouTubeレビュー動画配信", status: "pending" },
-        { id: 13, stage_zh: "9. 工厂交期", stage_ja: "9. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・出荷前OQC検査合格", plan: "第 15 周", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货出厂检验单", deliverable_ja: "出荷前品質検査成績書", status: "pending" },
-        { id: 14, stage_zh: "10. 货到京东仓库的时间", stage_ja: "10. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "日本通関完了・京東海外倉庫正式入庫完了", plan: targetDateStr || "第 16 周", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫受入完了証", status: "pending" },
-        { id: 15, stage_zh: "11. 消费者发货时间", stage_ja: "11. 支援者・顧客発送", name_zh: "首批现货或众筹订单正式发货给消费者", name_ja: "支援者・エンドユーザー向け発送完了", plan: "第 17 周", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "快递发货清单与单号", deliverable_ja: "出荷伝票番号一覧", status: "pending" }
+        { id: 16, stage_zh: "9. 企划出具验货报告与标准", stage_ja: "9. 企画検品基準・レポート作成", name_zh: "企划编制出厂验货报告与验收标准，交付现场验货员", name_ja: "企画による出荷前検品レポート・検品基準書の作成、検品員へ提供", plan: "第 14 周", actual: "", owner_zh: "企划部", owner_ja: "企画部", deliverable_zh: "《出厂验货报告与标准判定书》(外观/性能/包装/AQL标准)", deliverable_ja: "《出荷前検品基準レポート》（外観・性能・梱包判定基準）", status: "pending", larkUrl: "" },
+        { id: 13, stage_zh: "10. 工厂交期", stage_ja: "10. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・出荷前OQC検査合格", plan: "第 15 周", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货出厂检验单", deliverable_ja: "出荷前品質検査成績書", status: "pending" },
+        { id: 14, stage_zh: "11. 货到京东仓库的时间", stage_ja: "11. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "日本通関完了・京東海外倉庫正式入庫完了", plan: targetDateStr || "第 16 周", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫受入完了証", status: "pending" },
+        { id: 15, stage_zh: "12. 消费者发货时间", stage_ja: "12. 支援者・顧客発送", name_zh: "首批现货或众筹订单正式发货给消费者", name_ja: "支援者・エンドユーザー向け発送完了", plan: "第 17 周", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "快递发货清单与单号", deliverable_ja: "出荷伝票番号一覧", status: "pending" }
       ];
     }
 
     // ================= Data Store & System Version Lifecycle =================
     // Whenever a new system generation is released, update SYSTEM_VERSION to auto-purge legacy stored data
-    const SYSTEM_VERSION = "v30_balanced_table_columns_owner_deliverable";
+    const SYSTEM_VERSION = "v31_add_stage9_inspection_report_milestone";
     const VERSION_STORAGE_KEY = "mitsukin_pms_current_system_version";
     const STORAGE_KEY = "mitsukin_pms_projects_" + SYSTEM_VERSION;
     const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_" + SYSTEM_VERSION;
@@ -3184,6 +3191,7 @@
           const isPackagingDieline = (stage && (stage.includes("彩盒外箱刀模") || stage.includes("刀模") || stage.includes("抜型") || stage.includes("包材図面"))) || (name && (name.includes("刀模") || name.includes("抜型") || name.includes("外箱箱规") || name.includes("包装结构")));
           const isTestReport = isTestReportMilestone(m);
           const isPo = isPoMilestone(m);
+          const isInspection = (stage && (stage.includes("验货") || stage.includes("検品"))) || (name && (name.includes("验货") || name.includes("検品")));
 
           let stageBadge = "";
           if (isStage1) {
@@ -3192,6 +3200,8 @@
             stageBadge = `<span class="px-2.5 py-1 rounded-md font-bold bg-blue-50 text-blue-800 border border-blue-200 text-[11px]">${stage}</span>`;
           } else if (isParallel) {
             stageBadge = `<span class="px-2.5 py-1 rounded-md font-bold bg-amber-50 text-amber-800 border border-amber-200 text-[11px]">${stage}</span>`;
+          } else if (isInspection) {
+            stageBadge = `<span class="px-2.5 py-1 rounded-md font-bold bg-purple-50 text-purple-900 border border-purple-200 text-[11px]">${stage}</span>`;
           } else {
             stageBadge = `<span class="px-2 py-0.5 rounded font-bold bg-slate-100 text-slate-800 text-[11px]">${stage}</span>`;
           }
@@ -3212,6 +3222,12 @@
               <span class="text-indigo-600 text-sm">📑</span>
               <span>${name}</span>
               <span class="px-1.5 py-0.5 rounded text-[10px] font-black bg-indigo-100 text-indigo-800 border border-indigo-200 shadow-2xs">${currentLang === 'ja' ? 'PO原本・貼付対応' : 'PO归档・支持粘贴'}</span>
+            </span>`;
+          } else if (isInspection) {
+            nameCellContent = `<span class="hover:text-indigo-600 cursor-pointer font-bold text-slate-900 inline-flex items-center gap-1.5 flex-wrap" onclick="openMilestoneModal(${idx})" title="${currentLang === 'ja' ? '企画作成の検品基準書・検品員引渡し' : '企划出具的验货标准报告，交付现场验货员'}">
+              <span class="text-indigo-600 text-sm">📋</span>
+              <span>${name}</span>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-black bg-purple-100 text-purple-800 border border-purple-200 shadow-2xs">${currentLang === 'ja' ? '企划出具・交付验货员' : '企划出具・交付验货员'}</span>
             </span>`;
           } else {
             nameCellContent = `<span class="hover:text-indigo-600 cursor-pointer" onclick="openMilestoneModal(${idx})" title="点击编辑节点详情">${name}</span>`;
