@@ -1,0 +1,8 @@
+{
+  "name": "mitsukin-pms-cloud",
+  "version": "1.0.0",
+  "description": "三金商事 多产品全流程研发管控系统 (SaaS云端协同版)",
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
