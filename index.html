@@ -1016,7 +1016,7 @@
 
   <!-- Modal: Manual Draft (说明书草稿与文案审查模态弹窗) -->
   <div id="manualDraftModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[9990] flex items-center justify-center p-3 md:p-6 overflow-y-auto">
-    <div class="bg-white rounded-3xl border border-slate-200 max-w-5xl w-full p-6 md:p-8 shadow-2xl space-y-5 my-auto max-h-[92vh] flex flex-col">
+    <div class="bg-white rounded-3xl border border-slate-200 max-w-5xl w-full p-6 md:p-8 shadow-2xl space-y-4 my-auto max-h-[92vh] flex flex-col">
       <!-- Modal Header -->
       <div class="flex justify-between items-start pb-4 border-b border-slate-100 shrink-0">
         <div class="flex items-start gap-3">
@@ -1191,6 +1191,8 @@
         </button>
       </div>
 
+      <!-- Unified Scrollable Body (KPI + Filters + Form + List) -->
+      <div class="overflow-y-auto custom-scroll flex-1 pr-1 space-y-4 min-h-0" id="testReportsScrollBody">
       <!-- KPI Summary Cards -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 shrink-0">
         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 text-center">
@@ -1308,9 +1310,10 @@
       </div>
 
       <!-- Reports List Container -->
-      <div id="testReportsListContainer" class="flex-1 overflow-y-auto space-y-3 pr-1 custom-scroll min-h-[220px]">
+      <div id="testReportsListContainer" class="space-y-3">
         <!-- Rendered via JS -->
       </div>
+      </div><!-- End of testReportsScrollBody -->
 
       <!-- Modal Footer -->
       <div class="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
@@ -1329,7 +1332,7 @@
   <!-- Modal: PO Upload & Paste Center (正式发注书上传与剪贴板粘贴中心) -->
   <!-- ============================================================== -->
   <div id="poUploadModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[9990] flex items-center justify-center p-3 md:p-6 overflow-y-auto">
-    <div class="bg-white rounded-3xl border border-slate-200 max-w-2xl w-full p-6 md:p-8 shadow-2xl space-y-5 my-auto max-h-[92vh] flex flex-col">
+    <div class="bg-white rounded-3xl border border-slate-200 max-w-2xl w-full p-6 md:p-8 shadow-2xl space-y-4 my-auto max-h-[92vh] flex flex-col">
       <!-- Modal Header -->
       <div class="flex justify-between items-start pb-4 border-b border-slate-100 shrink-0">
         <div class="flex items-start gap-3">
@@ -1355,6 +1358,8 @@
         </button>
       </div>
 
+      <!-- Unified Scrollable Body -->
+      <div class="overflow-y-auto custom-scroll flex-1 pr-1 space-y-4 min-h-0">
       <!-- Drag & Drop / Paste Target Zone -->
       <div id="poDropZone" class="border-2 border-dashed border-indigo-300 hover:border-indigo-500 bg-indigo-50/40 hover:bg-indigo-50/80 rounded-2xl p-6 md:p-8 text-center transition cursor-pointer group space-y-2 select-none"
            onclick="document.getElementById('poFileInput').click()"
@@ -1439,6 +1444,7 @@
           <input type="url" id="poInputLarkUrl" placeholder="https://mitsukin.sg.larksuite.com/... (可同时关联 Lark 在线文档)" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-mono focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
       </div>
+      </div><!-- End of po scrollable body -->
 
       <!-- Modal Footer -->
       <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3 shrink-0">
@@ -1458,8 +1464,8 @@
   </div>
 
   <!-- Modal: New Project -->
-  <div id="newProjectModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl border border-slate-200 max-w-lg w-full p-6 shadow-2xl space-y-4">
+  <div id="newProjectModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center p-3 md:p-6 overflow-y-auto">
+    <div class="bg-white rounded-3xl border border-slate-200 max-w-lg w-full p-6 shadow-2xl space-y-4 my-auto max-h-[92vh] flex flex-col overflow-hidden">
       <div class="flex justify-between items-center pb-3 border-b border-slate-100">
         <h3 class="text-lg font-black text-slate-900" id="newProjectModalTitle">✨ 新建产品研发立项</h3>
         <button onclick="closeNewProjectModal()" class="text-slate-400 hover:text-slate-600 text-lg font-bold">✕</button>
@@ -1501,7 +1507,7 @@
   </div>
 
   <!-- Modal: Edit Project Info -->
-  <div id="editProjectModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+  <div id="editProjectModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center p-3 md:p-6 overflow-y-auto">
     <div class="bg-white rounded-2xl border border-slate-200 max-w-lg w-full p-6 shadow-2xl space-y-4">
       <div class="flex justify-between items-center pb-3 border-b border-slate-100">
         <h3 class="text-lg font-black text-slate-900" id="editProjectModalTitle">✏️ 编辑产品基本信息</h3>
@@ -1554,16 +1560,16 @@
   </div>
 
   <!-- Modal: Edit / Add Milestone -->
-  <div id="milestoneModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl border border-slate-200 max-w-md w-full p-6 shadow-2xl space-y-4">
-      <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+  <div id="milestoneModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center p-3 md:p-6 overflow-y-auto">
+    <div class="bg-white rounded-3xl border border-slate-200 max-w-lg w-full p-6 shadow-2xl space-y-4 my-auto max-h-[92vh] flex flex-col">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100 shrink-0">
         <h3 class="text-lg font-black text-slate-900" id="milestoneModalTitle">✏️ 编辑时间节点</h3>
-        <button onclick="closeMilestoneModal()" class="text-slate-400 hover:text-slate-600 text-lg font-bold">✕</button>
+        <button onclick="closeMilestoneModal()" class="w-8 h-8 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center text-base transition">✕</button>
       </div>
 
       <input type="hidden" id="mMilestoneIdx">
 
-      <div class="space-y-3 text-xs">
+      <div class="space-y-3 text-xs overflow-y-auto custom-scroll flex-1 pr-1 min-h-0">
         <div>
           <label class="block font-bold text-slate-700 mb-1" id="lblMilestoneStage">所属流程阶段 *</label>
           <select id="mMilestoneStage" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs outline-none bg-white font-medium">
@@ -1642,9 +1648,9 @@
         </div>
       </div>
 
-      <div class="flex justify-end gap-2 pt-2">
-        <button onclick="closeMilestoneModal()" class="px-4 py-2 border border-slate-300 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-50 transition" id="btnCancelMilestone">取消</button>
-        <button onclick="saveMilestoneFromModal()" class="px-5 py-2 bg-indigo-600 text-white rounded-lg text-xs font-bold hover:bg-indigo-700 transition shadow" id="btnConfirmMilestone">保存节点</button>
+      <div class="flex justify-end gap-2 pt-3 border-t border-slate-100 shrink-0">
+        <button onclick="closeMilestoneModal()" class="px-4 py-2 border border-slate-300 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition" id="btnCancelMilestone">取消</button>
+        <button onclick="saveMilestoneFromModal()" class="px-5 py-2 bg-indigo-600 text-white rounded-xl text-xs font-black hover:bg-indigo-700 transition shadow" id="btnConfirmMilestone">保存节点</button>
       </div>
     </div>
   </div>
@@ -2072,7 +2078,7 @@
 
     // ================= Data Store & System Version Lifecycle =================
     // Whenever a new system generation is released, update SYSTEM_VERSION to auto-purge legacy stored data
-    const SYSTEM_VERSION = "v27_clean_test_reports_no_report_no";
+    const SYSTEM_VERSION = "v28_smooth_unconstrained_modal_scroll";
     const VERSION_STORAGE_KEY = "mitsukin_pms_current_system_version";
     const STORAGE_KEY = "mitsukin_pms_projects_" + SYSTEM_VERSION;
     const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_" + SYSTEM_VERSION;
@@ -7829,6 +7835,12 @@ ${isJa ? d.subtitle_ja : d.subtitle_zh}
       document.getElementById("trInputLpAdopted").checked = true;
       document.getElementById("trFormCardTitle").innerHTML = `<span>📝</span> <span>${isJa ? '新規実測試験報告＆訴求点エビデンスの登録' : '录入新实测报告与卖点验证项'}</span>`;
       document.getElementById("trInputName").focus();
+      const formEl = document.getElementById("testReportFormCard");
+      if (formEl) {
+        setTimeout(() => {
+          formEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }, 60);
+      }
     }
 
     function saveTestReportItem() {
