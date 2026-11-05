@@ -457,13 +457,13 @@
             <thead>
               <tr class="bg-slate-50 border-b border-slate-200 text-slate-500 font-bold">
                 <th class="py-3 px-3 w-16 text-center" id="thStatus">状态</th>
-                <th class="py-3 px-3 w-44" id="thStage">业务流程阶段</th>
-                <th class="py-3 px-3 min-w-[200px]" id="thName">核心节点名称 / 考核要点</th>
-                <th class="py-3 px-3 w-32 text-center" id="thPlan">最晚期限 (Deadline)</th>
-                <th class="py-3 px-3 w-32 text-center" id="thActual">实际达成日</th>
-                <th class="py-3 px-3 w-28" id="thOwner">责任人</th>
-                <th class="py-3 px-3 min-w-[320px] lg:min-w-[420px]" id="thDeliverable">核心成果物 / 交付标准</th>
-                <th class="py-3 px-3 w-28 text-center" id="thAction">操作</th>
+                <th class="py-3 px-3 w-40" id="thStage">业务流程阶段</th>
+                <th class="py-3 px-3 min-w-[180px] lg:min-w-[220px]" id="thName">核心节点名称 / 考核要点</th>
+                <th class="py-3 px-3 w-28 text-center" id="thPlan">最晚期限 (Deadline)</th>
+                <th class="py-3 px-3 w-28 text-center" id="thActual">实际达成日</th>
+                <th class="py-3 px-3 w-36 min-w-[140px]" id="thOwner">责任人</th>
+                <th class="py-3 px-3 min-w-[260px] max-w-[350px]" id="thDeliverable">核心成果物 / 交付标准</th>
+                <th class="py-3 px-3 w-24 text-center" id="thAction">操作</th>
               </tr>
             </thead>
             <tbody id="detailTableBody" class="divide-y divide-slate-100 text-slate-700 font-normal">
@@ -2078,7 +2078,7 @@
 
     // ================= Data Store & System Version Lifecycle =================
     // Whenever a new system generation is released, update SYSTEM_VERSION to auto-purge legacy stored data
-    const SYSTEM_VERSION = "v29_fix_table_render_runtime_is_po";
+    const SYSTEM_VERSION = "v30_balanced_table_columns_owner_deliverable";
     const VERSION_STORAGE_KEY = "mitsukin_pms_current_system_version";
     const STORAGE_KEY = "mitsukin_pms_projects_" + SYSTEM_VERSION;
     const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_" + SYSTEM_VERSION;
@@ -3229,11 +3229,11 @@
               const pointShort = (getLangText(r, "sellingPoint") || "").replace(/^[【\[].*?[】\]]/, "").slice(0, 26);
               const isPassed = r.status === "passed";
               reportBadges += `
-                <div class="flex items-center gap-1.5 text-[10px] bg-white border border-amber-200/90 rounded-md px-2 py-0.5 shadow-2xs">
+                <div class="flex items-center gap-1.5 text-[10px] bg-white border border-amber-200/90 rounded-md px-2 py-0.5 shadow-2xs min-w-0">
                   <span class="text-amber-600 shrink-0">🎯</span>
-                  <span class="text-slate-800 font-bold truncate max-w-[150px]" title="${getLangText(r, "reportName")}">${repName}</span>
+                  <span class="text-slate-800 font-bold truncate max-w-[105px]" title="${getLangText(r, "reportName")}">${repName}</span>
                   <span class="text-amber-400 font-bold shrink-0">➔</span>
-                  <span class="text-slate-600 truncate max-w-[200px]" title="${getLangText(r, "sellingPoint")}">${pointShort}</span>
+                  <span class="text-slate-600 truncate flex-1 min-w-0" title="${getLangText(r, "sellingPoint")}">${pointShort}</span>
                   <span class="ml-auto shrink-0 text-[9px] font-bold ${isPassed ? 'text-emerald-600' : 'text-amber-600'}">${isPassed ? '✓' : '⏳'}</span>
                 </div>
               `;
@@ -3454,8 +3454,10 @@
                 onchange="updateMilestoneActualDate(${idx}, this.value)"
                 class="w-24 text-center px-1.5 py-1 text-xs font-mono rounded border border-transparent hover:border-slate-300 focus:border-indigo-500 focus:bg-white transition ${m.actual ? 'text-emerald-700 font-bold bg-emerald-50/60' : 'text-slate-400 bg-slate-50'}">
             </td>
-            <td class="py-3 px-3 text-slate-600">${owner || '-'}</td>
-            <td class="py-3 px-3 text-[11px] text-slate-600 min-w-[320px] lg:min-w-[420px] break-words">
+            <td class="py-3 px-3 text-slate-700 font-medium text-xs w-36 min-w-[140px] leading-relaxed">
+              ${owner ? `<div class="break-words">${owner}</div>` : '-'}
+            </td>
+            <td class="py-3 px-3 text-[11px] text-slate-600 min-w-[260px] max-w-[350px] break-words">
               ${deliverableCellContent}
             </td>
             <td class="py-3 px-3 text-center whitespace-nowrap space-x-1">
