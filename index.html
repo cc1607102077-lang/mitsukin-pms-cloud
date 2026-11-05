@@ -1245,11 +1245,8 @@
           <button onclick="toggleAddTestReportForm(false)" class="text-xs text-slate-400 hover:text-slate-600">✕ 取消</button>
         </div>
         <input type="hidden" id="trEditId" value="">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-          <div>
-            <label class="block text-[11px] font-black text-slate-700 mb-1" id="lblTrNo">报告编号 / 批次 <span class="text-red-500">*</span></label>
-            <input type="text" id="trInputNo" placeholder="如：Q2026083" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-mono font-bold focus:ring-2 focus:ring-amber-500 outline-none">
-          </div>
+        <input type="hidden" id="trInputNo" value="">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
             <label class="block text-[11px] font-black text-slate-700 mb-1" id="lblTrLab">出具机构 / 工厂实验室 <span class="text-red-500">*</span></label>
             <input type="text" id="trInputLab" placeholder="如：易力科硬件可靠性实验室" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-amber-500 outline-none">
@@ -2075,7 +2072,7 @@
 
     // ================= Data Store & System Version Lifecycle =================
     // Whenever a new system generation is released, update SYSTEM_VERSION to auto-purge legacy stored data
-    const SYSTEM_VERSION = "v26_full_width_deliverables_and_clean_naming";
+    const SYSTEM_VERSION = "v27_clean_test_reports_no_report_no";
     const VERSION_STORAGE_KEY = "mitsukin_pms_current_system_version";
     const STORAGE_KEY = "mitsukin_pms_projects_" + SYSTEM_VERSION;
     const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_" + SYSTEM_VERSION;
@@ -3221,14 +3218,15 @@
 
             let reportBadges = "";
             reports.slice(0, 3).forEach(r => {
-              const rNo = r.reportNo || "";
-              const pointShort = (getLangText(r, "sellingPoint") || "").replace(/^[【\[].*?[】\]]/, "").slice(0, 24);
+              const repName = (getLangText(r, "reportName") || "").slice(0, 16);
+              const pointShort = (getLangText(r, "sellingPoint") || "").replace(/^[【\[].*?[】\]]/, "").slice(0, 26);
               const isPassed = r.status === "passed";
               reportBadges += `
                 <div class="flex items-center gap-1.5 text-[10px] bg-white border border-amber-200/90 rounded-md px-2 py-0.5 shadow-2xs">
-                  <span class="font-mono font-bold text-slate-800 shrink-0">${rNo}</span>
-                  <span class="text-amber-600 font-bold shrink-0">➔</span>
-                  <span class="text-slate-700 truncate max-w-[190px]" title="${getLangText(r, "sellingPoint")}">${pointShort}</span>
+                  <span class="text-amber-600 shrink-0">🎯</span>
+                  <span class="text-slate-800 font-bold truncate max-w-[150px]" title="${getLangText(r, "reportName")}">${repName}</span>
+                  <span class="text-amber-400 font-bold shrink-0">➔</span>
+                  <span class="text-slate-600 truncate max-w-[200px]" title="${getLangText(r, "sellingPoint")}">${pointShort}</span>
                   <span class="ml-auto shrink-0 text-[9px] font-bold ${isPassed ? 'text-emerald-600' : 'text-amber-600'}">${isPassed ? '✓' : '⏳'}</span>
                 </div>
               `;
@@ -7717,9 +7715,8 @@ ${isJa ? d.subtitle_ja : d.subtitle_zh}
       const totalCount = reports.length;
       if (totalCount === 0) return;
 
-      const topNos = reports.slice(0, 3).map(r => r.reportNo).join("+");
-      const summaryZh = `共 ${totalCount} 份实测报告(${topNos}${totalCount > 3 ? '等' : ''})，覆盖 ${totalCount} 项宣传卖点`;
-      const summaryJa = `実測報告書計${totalCount}件(${topNos}${totalCount > 3 ? '等' : ''})、${totalCount}大訴求点をエビデンス実証済`;
+      const summaryZh = `共 ${totalCount} 份实测报告，覆盖 ${totalCount} 项核心宣传卖点验证`;
+      const summaryJa = `実測報告書計${totalCount}件、${totalCount}大訴求点をエビデンス実証済`;
       
       m.deliverable_zh = summaryZh;
       m.deliverable_ja = summaryJa;
@@ -7813,8 +7810,8 @@ ${isJa ? d.subtitle_ja : d.subtitle_zh}
           document.getElementById("trInputKeyData").value = getLangText(item, "keyData") || item.keyData || "";
           document.getElementById("trInputLarkUrl").value = item.larkUrl || "";
           document.getElementById("trInputLpAdopted").checked = !!item.lpAdopted;
-          document.getElementById("trFormCardTitle").innerHTML = `<span>✏️</span> <span>${isJa ? '実測報告＆訴求点の編集' : '编辑实测报告与卖点验证项'} (${item.reportNo || ''})</span>`;
-          document.getElementById("trInputNo").focus();
+          document.getElementById("trFormCardTitle").innerHTML = `<span>✏️</span> <span>${isJa ? '実測報告＆訴求点の編集' : '编辑实测报告与卖点验证项'}</span>`;
+          document.getElementById("trInputName").focus();
           return;
         }
       }
@@ -7831,7 +7828,7 @@ ${isJa ? d.subtitle_ja : d.subtitle_zh}
       document.getElementById("trInputLarkUrl").value = "";
       document.getElementById("trInputLpAdopted").checked = true;
       document.getElementById("trFormCardTitle").innerHTML = `<span>📝</span> <span>${isJa ? '新規実測試験報告＆訴求点エビデンスの登録' : '录入新实测报告与卖点验证项'}</span>`;
-      document.getElementById("trInputNo").focus();
+      document.getElementById("trInputName").focus();
     }
 
     function saveTestReportItem() {
@@ -7851,11 +7848,7 @@ ${isJa ? d.subtitle_ja : d.subtitle_zh}
       const larkUrl = document.getElementById("trInputLarkUrl").value.trim();
       const lpAdopted = document.getElementById("trInputLpAdopted").checked;
 
-      if (!reportNo) {
-        alert(isJa ? "試験報告書の管理番号（ロットNo）を入力してください。" : "请输入测试报告编号/批次（如 Q2026083）！");
-        document.getElementById("trInputNo").focus();
-        return;
-      }
+// reportNo field removed per user request
       if (!reportName) {
         alert(isJa ? "試験報告書の名称を入力してください。" : "请输入测试报告全称！");
         document.getElementById("trInputName").focus();
@@ -7929,7 +7922,7 @@ ${isJa ? d.subtitle_ja : d.subtitle_zh}
       if (!p || !p.testReports) return;
 
       const item = p.testReports.find(r => r.id === repId);
-      const repName = item ? (item.reportNo + " " + (item.reportName || "")) : "";
+      const repName = item ? (item.reportName || "") : "";
       if (!confirm(isJa ? `試験報告【${repName}】を削除してもよろしいですか？` : `确定删除实测报告【${repName}】及对应的卖点验证吗？`)) {
         return;
       }
@@ -8075,8 +8068,8 @@ ${isJa ? d.subtitle_ja : d.subtitle_zh}
         card.innerHTML = `
           <div class="flex items-start justify-between gap-3 flex-wrap pb-2 border-b border-slate-100">
             <div class="flex items-center gap-2 flex-wrap">
-              <span class="px-2.5 py-1 rounded-lg bg-slate-900 text-white font-mono font-black text-xs shadow-2xs">
-                ${no}
+              <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center text-xs font-bold shrink-0">
+                🧪
               </span>
               ${statusBadge}
               ${date ? `<span class="text-[11px] font-mono text-slate-400">📅 ${date}</span>` : ''}
