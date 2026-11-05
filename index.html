@@ -1602,7 +1602,81 @@
         unitMarginalProfit: 0,
         marginalProfitRatio: "-",
         totalMarginalProfit: 0,
-                milestones: [
+        milestones: [
+          { id: 1, stage_zh: "1. 新产品发布期", stage_ja: "1. 新製品発表", name_zh: "确定初版规格、初步价格、初样及差异化卖点", name_ja: "初期仕様・概算価格・初試作・差別化ポイント確定", plan: "待定", actual: "", owner_zh: "企划部", owner_ja: "企画部", deliverable_zh: "初样机 + 卖点清单", deliverable_ja: "初試作機＋訴求点リスト", status: "pending" },
+          { id: 2, stage_zh: "2. 新产品定义期", stage_ja: "2. 新製品定義", name_zh: "市场调研/初测/品牌考量，95%锁定规格与报价", name_ja: "市場調査・初期評価・ブランド戦略、95%仕様・見積確定", plan: "待定", actual: "", owner_zh: "产品部", owner_ja: "製品部", deliverable_zh: "95%定版PRD与报价单", deliverable_ja: "95%確定PRDおよび見積書", status: "pending" },
+          { id: 3, stage_zh: "3. 第二次产品测试", stage_ja: "3. 二次試作評価", name_zh: "二次样机测试，发现问题并记录改善点清单", name_ja: "二次試作実車評価、課題抽出と改善点リスト作成", plan: "待定", actual: "", owner_zh: "品质部", owner_ja: "品質部", deliverable_zh: "《二次样机实车改善单》", deliverable_ja: "《二次試作実車改善シート》", status: "pending" },
+          { id: 4, stage_zh: "4. 并行：测试报告与卖点输出", stage_ja: "4. 並行：試験報告・訴求点確定", name_zh: "安排产品相关测试报告(输出核心卖点供运营美工)", name_ja: "各種試験報告書作成（LPデザイン訴求用）", plan: "待定", actual: "", owner_zh: "品质部", owner_ja: "品質部", deliverable_zh: "《冷暖降温实测报告》+ 卖点表", deliverable_ja: "《冷暖実測データ報告書》＋訴求表", status: "pending" },
+          { id: 5, stage_zh: "4. 并行：正式发注书", stage_ja: "4. 並行：工場正式発注書(PO)", name_zh: "正式发注书下达给工厂(锁定生产配额与商务)", name_ja: "工場へ正式発注書(PO)発行・量産枠確保", plan: "待定", actual: "", owner_zh: "采购部", owner_ja: "調達部", deliverable_zh: "正式发注书(PO单)", deliverable_ja: "正式発注書(PO)", status: "pending" },
+          { id: 6, stage_zh: "4. 并行：安排网红样品共行", stage_ja: "4. 并行：KOLサンプル発送", name_zh: "安排网红/KOL评测样机寄送与联络排期", name_ja: "KOL・インフルエンサー評価サンプル発送・日程FIX", plan: "待定", actual: "", owner_zh: "海外运营", owner_ja: "海外運用", deliverable_zh: "KOL合作确认书+排期表", deliverable_ja: "KOLコラボ契約書＋スケジュール表", status: "pending" },
+          { id: 7, stage_zh: "4. 并行：彩盒制作与最晚印刷时间", stage_ja: "4. 並行：化粧箱デザイン・最晩印刷FIX", name_zh: "彩盒刀模图与最晚印刷封样", name_ja: "化粧箱抜型図面＆最晩印刷校正承認", plan: "待定", actual: "", owner_zh: "包装设计", owner_ja: "パッケージ設計", deliverable_zh: "彩盒刀模图+打样封样件", deliverable_ja: "化粧箱抜型図面＋印刷校正現品承認", status: "pending", larkUrl: "" },
+          { id: 8, stage_zh: "4. 并行：外箱箱规与最晚制作时间", stage_ja: "4. 並行：外箱仕様・最晩印刷FIX", name_zh: "K=K重型外箱箱规与唛头印刷最晚封样", name_ja: "K=K外箱仕様確定＆カートンマーク最晩承認", plan: "待定", actual: "", owner_zh: "结构工程", owner_ja: "構造設計", deliverable_zh: "外箱箱规图+唛头印刷文件", deliverable_ja: "外箱仕様書＋カートンマークデータ", status: "pending", larkUrl: "" },
+          { id: 9, stage_zh: "4. 并行：说明书定稿与最晚印刷时间", stage_ja: "4. 並行：取扱説明書最終FIX・最晩印刷FIX", name_zh: "说明书定审与日文排版最晚印刷时间", name_ja: "取扱説明書日本語校正＆最晩印刷FIX", plan: "待定", actual: "", owner_zh: "包装设计", owner_ja: "パッケージ設計", deliverable_zh: "说明书日文定稿印刷版(PDF)", deliverable_ja: "取扱説明書日本語最終印刷データ(PDF)", status: "pending", larkUrl: "" },
+          { id: 8, stage_zh: "5. 美工最终版网页交付", stage_ja: "5. LPデザイン最終FIX", name_zh: "美工完成最终版网页/详情页视觉与排版", name_ja: "デザイナー最終版WEBページ/LPビジュアル完成", plan: "待定", actual: "", owner_zh: "设计部", owner_ja: "デザイン部", deliverable_zh: "电商详情页最终视觉稿", deliverable_ja: "EC販売ページデザインFIX稿", status: "pending" },
+          { id: 9, stage_zh: "6. 网页正式上架发售", stage_ja: "6. WEB販売ページ公開", name_zh: "网页正式上架(乐天/雅虎/亚马逊正式发售)", name_ja: "WEB販売ページ公開（楽天/Yahoo/Amazon販売開始）", plan: "待定", actual: "", owner_zh: "电商运营", owner_ja: "EC運用", deliverable_zh: "乐天/亚马逊正式Listing上线", deliverable_ja: "モール本番Listing公開", status: "pending" },
+          { id: 10, stage_zh: "7. 网红测评视频发布", stage_ja: "7. インフルエンサー動画公開", name_zh: "网红评测视频与社交媒体内容集中发布引流", name_ja: "インフルエンサーレビュー動画公開・拡散", plan: "待定", actual: "", owner_zh: "营销推广", owner_ja: "マーケティング", deliverable_zh: "Youtube/TikTok视频上线", deliverable_ja: "YouTube/TikTokレビュー動画配信", status: "pending" },
+          { id: 11, stage_zh: "8. 工厂大货交期", stage_ja: "8. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂OQC检验", name_ja: "工場量産完了・出荷前OQC全数抜き取り検査合格", plan: "待定", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货质检合格单+出厂报告", deliverable_ja: "量産出荷検査合格票＋出荷報告書", status: "pending" },
+          { id: 12, stage_zh: "9. 货到京东仓库", stage_ja: "9. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "通関完了・京東倉庫正式納品完了", plan: "待定", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫正規入庫完了書", status: "pending" },
+          { id: 13, stage_zh: "10. 消费者发货时间", stage_ja: "10. 支援者・顧客発送", name_zh: "首批订单出库发货，日本消费者快递派送完毕", name_ja: "佐川・ヤマト一斉出荷、エンドユーザー配送完了", plan: "待定", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "佐川/黑猫快递单号全部回传完毕", deliverable_ja: "全注文伝票番号反映・配送完了報告", status: "pending" }
+        ]
+      },
+
+      // 2. SPEEDER Ingnic系列打火电源 CE211 (未正式开始，不预填虚假数据)
+      "ignic_ce211": {
+        id: "ignic_ce211",
+        name_zh: "SPEEDER Ingnic系列打火电源 CE211",
+        name_ja: "SPEEDER Ignicシリーズ ジャンプスターター CE211",
+        category_zh: "应急打火 / 启动电源",
+        category_ja: "緊急始動 / ポータブル電源",
+        desc_zh: "Ingnic 系列轻量化应急启动电源，具备超强高倍率瞬间大电流与极端低温打火能力。",
+        desc_ja: "Ignicシリーズ軽量ジャンプスターター。最大1200Aピーク電流と極低温エンジン始動に対応。",
+        targetDate: "待定",
+        leader_zh: "三金企划部",
+        leader_ja: "三金企画部",
+        currentStage_zh: "1. 新产品发布期",
+        currentStage_ja: "1. 新製品発表フェーズ",
+        poQuantity: 0,
+        unitMarginalProfit: 0,
+        marginalProfitRatio: "-",
+        totalMarginalProfit: 0,
+        milestones: [
+          { id: 1, stage_zh: "1. 新产品发布期", stage_ja: "1. 新製品発表", name_zh: "确定初版规格、初步价格、初样及差异化卖点", name_ja: "初期仕様・概算価格・初試作・差別化ポイント確定", plan: "待定", actual: "", owner_zh: "产品部", owner_ja: "製品部", deliverable_zh: "初样机 + 1200A 峰值卖点表", deliverable_ja: "初試作機＋1200Aピーク訴求表", status: "pending" },
+          { id: 2, stage_zh: "2. 新产品定义期", stage_ja: "2. 新製品定義", name_zh: "市场调研/初测/品牌考量，95%锁定规格与报价", name_ja: "95%セル仕様および金型見積確定", plan: "待定", actual: "", owner_zh: "采购组", owner_ja: "調達組", deliverable_zh: "95%锁定电芯规格与模具报价", deliverable_ja: "95%セル仕様および金型見積確定書", status: "pending" },
+          { id: 3, stage_zh: "3. 第二次产品测试", stage_ja: "3. 二次試作評価", name_zh: "二次样机测试，发现问题并记录改善点清单", name_ja: "二次試作テスト、スマートクリップ発熱改善リスト", plan: "待定", actual: "", owner_zh: "研发组", owner_ja: "開発組", deliverable_zh: "《智能防反接夹问题与保护逻辑改善》", deliverable_ja: "《スマートクリップ保護回路改善課題票》", status: "pending" },
+          { id: 4, stage_zh: "4. 并行：测试报告与卖点输出", stage_ja: "4. 並行：試験報告・訴求点確定", name_zh: "安排产品相关测试报告(输出核心卖点供运营美工)", name_ja: "製品試験報告書（-20℃極低温実車始動検証）", plan: "待定", actual: "", owner_zh: "品质部", owner_ja: "品質部", deliverable_zh: "《-20℃极寒实车打火报告》+ 卖点提炼", deliverable_ja: "《-20℃極寒実車始動試験報告書》", status: "pending" },
+          { id: 5, stage_zh: "4. 并行：正式发注书", stage_ja: "4. 並行：工場正式発注書(PO)", name_zh: "正式发注书下达给工厂(锁定生产配额与商务)", name_ja: "工場へ正式発注書(PO)発行", plan: "待定", actual: "", owner_zh: "采购部", owner_ja: "調達部", deliverable_zh: "正式签字生效 PO 发注单", deliverable_ja: "正式サイン済 PO発注書", status: "pending" },
+          { id: 6, stage_zh: "4. 并行：安排网红样品共行", stage_ja: "4. 并行：KOLサンプル発送", name_zh: "安排网红/KOL评测样机寄送与联络排期", name_ja: "KOL・インフルエンサー評価サンプル発送", plan: "待定", actual: "", owner_zh: "海外运营", owner_ja: "海外運用", deliverable_zh: "KOL 样机寄送与排期单", deliverable_ja: "KOL評価サンプル発送管理表", status: "pending" },
+          { id: 7, stage_zh: "4. 并行：彩盒制作与最晚印刷时间", stage_ja: "4. 並行：化粧箱デザイン・最晩印刷FIX", name_zh: "彩盒刀模图与最晚印刷封样", name_ja: "化粧箱抜型図面＆最晩印刷校正承認", plan: "待定", actual: "", owner_zh: "包装设计", owner_ja: "パッケージ設計", deliverable_zh: "彩盒刀模图+打样封样件", deliverable_ja: "化粧箱抜型図面＋印刷校正現品承認", status: "pending", larkUrl: "" },
+          { id: 8, stage_zh: "4. 并行：外箱箱规与最晚制作时间", stage_ja: "4. 並行：外箱仕様・最晩印刷FIX", name_zh: "K=K重型外箱箱规与唛头印刷最晚封样", name_ja: "K=K外箱仕様確定＆カートンマーク最晩承認", plan: "待定", actual: "", owner_zh: "结构工程", owner_ja: "構造設計", deliverable_zh: "外箱箱规图+唛头印刷文件", deliverable_ja: "外箱仕様書＋カートンマークデータ", status: "pending", larkUrl: "" },
+          { id: 9, stage_zh: "4. 并行：说明书定稿与最晚印刷时间", stage_ja: "4. 並行：取扱説明書最終FIX・最晩印刷FIX", name_zh: "说明书定审与日文排版最晚印刷时间", name_ja: "取扱説明書日本語校正＆最晩印刷FIX", plan: "待定", actual: "", owner_zh: "包装设计", owner_ja: "パッケージ設計", deliverable_zh: "说明书日文定稿印刷版(PDF)", deliverable_ja: "取扱説明書日本語最終印刷データ(PDF)", status: "pending", larkUrl: "" },
+          { id: 8, stage_zh: "5. 美工最终版网页交付", stage_ja: "5. LPデザイン最終FIX", name_zh: "美工完成最终版网页/详情页视觉与排版", name_ja: "デザイナー最終版WEBページ/LPビジュアル完成", plan: "待定", actual: "", owner_zh: "设计部", owner_ja: "デザイン部", deliverable_zh: "详情页视觉全套定稿", deliverable_ja: "LPデザインデータ全套納品", status: "pending" },
+          { id: 9, stage_zh: "6. 网页上架的时间", stage_ja: "6. WEB販売ページ公開", name_zh: "网页正式上架(Makuake众筹开售 / 电商上架)", name_ja: "Makuakeクラウドファンディング先行公開", plan: "待定", actual: "", owner_zh: "日本团队", owner_ja: "日本チーム", deliverable_zh: "正式发售上线", deliverable_ja: "Makuakeプロジェクト公開完了", status: "pending" },
+          { id: 10, stage_zh: "7. 网红视频发布时间", stage_ja: "7. インフルエンサー動画公開", name_zh: "网红评测视频与社交媒体内容集中发布引流", name_ja: "インフルエンサー実車始動動画公開・拡散", plan: "待定", actual: "", owner_zh: "营销推广", owner_ja: "マーケティング", deliverable_zh: "全网测评视频爆发", deliverable_ja: "各種SNS実証動画一斉配信", status: "pending" },
+          { id: 11, stage_zh: "8. 工厂交期", stage_ja: "8. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・OQC検査合格", plan: "待定", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货出厂检验单", deliverable_ja: "量産出荷検査成績書", status: "pending" },
+          { id: 12, stage_zh: "9. 货到京东仓库的时间", stage_ja: "9. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "通関完了・京東倉庫正式納品完了", plan: "待定", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫入庫完了証", status: "pending" },
+          { id: 13, stage_zh: "10. 消费者发货时间", stage_ja: "10. 支援者・顧客発送", name_zh: "众筹回报订单正式发货，交付终端口碑", name_ja: "Makuakeリターン一斉出荷、支援者への納品完了", plan: "待定", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "众筹订单全部发货出库单", deliverable_ja: "クラファンリターン発送完了報告", status: "pending" }
+        ]
+      },
+
+      // 3. SPEEDER Ingnic系列充电器 SP-BC122/SP-BC127 (重点项目 - 唯一实际在跑项目)
+      "ignic_sp_bc122_127": {
+        id: "ignic_sp_bc122_127",
+        name_zh: "SPEEDER Ingnic系列充电器 SP-BC122 / SP-BC127",
+        name_ja: "SPEEDER Ignicシリーズ スマート充電器 SP-BC122 / SP-BC127",
+        category_zh: "车载电气 / 充电器",
+        category_ja: "車載電装 / バッテリー充電器",
+        desc_zh: "2A 摩托专用(IPX4防水已过) & 7A 汽车全彩大屏旗舰款，支持充电宝应急自救打火与8阶段充电。",
+        desc_ja: "2Aバイク専用(IPX4防水適合)＆7Aフルカラー大画面。モバイルバッテリーでの緊急補電始動＆8ステップ充電対応。",
+        targetDate: "2026/12/28",
+        leader_zh: "三金运营 × 易力科Will",
+        leader_ja: "三金運用チーム × 易力科Will",
+        currentStage_zh: "4. 并行攻坚期(测试/发注/包材)",
+        currentStage_ja: "4. 並行推進フェーズ(試験/发注/包材)",
+        poQuantity: 1000,
+        unitMarginalProfit: 1253.5,
+        marginalProfitRatio: "22.8%",
+        totalMarginalProfit: 1253500,
+        milestones: [
           { id: 1, stage_zh: "1. 新产品发布期", stage_ja: "1. 新製品発表", name_zh: "确定初版规格、初步价格、初样及差异化卖点", name_ja: "2A/7A初期仕様・概算見積・PD緊急補電差別化確定", plan: "2026/09/25", actual: "2026/09/25", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "2A/7A初始机型 + PD供电创新卖点", deliverable_ja: "2A/7A初期試作＋PD給電訴求表", status: "done" },
           { id: 2, stage_zh: "2. 新产品定义期", stage_ja: "2. 新製品定義", name_zh: "市场调研/初测/品牌考量，95%锁定规格与报价", name_ja: "競合調査・95%技術仕様確定＆Henca最終階段見積確定", plan: "2026/09/30", actual: "2026/09/30", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "95%锁定技术规范 + Henca阶梯报价单", deliverable_ja: "95%確定技術仕様書＋Henca見積書", status: "done", larkUrl: "" },
           { id: 3, stage_zh: "3. 第二次产品测试", stage_ja: "3. 二次試作評価", name_zh: "二次样机测试，发现问题并记录改善点清单", name_ja: "二次試作評価、カラー液晶UI文字欠け＆5秒遅延改善FIX", plan: "2026/10/22", actual: "2026/10/22", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "《UI截断漏字/开机缓冲改善单》", deliverable_ja: "《UI文字欠け＆起動遅延改善確認書》", status: "done" },
@@ -1658,29 +1732,29 @@
       }
     };
 
-        function generateStandardUserMilestones(targetDateStr) {
+    function generateStandardUserMilestones(targetDateStr) {
       return [
-        { id: 1, stage_zh: "1. 新产品发布期", stage_ja: "1. 新製品発表", name_zh: "确定初版规格、初步价格、初样及差异化卖点", name_ja: "初期仕様・概算価格・初試作・差別化ポイント確定", plan: "第 1 周", actual: "", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "初样机 + 卖点表", deliverable_ja: "初試作機＋訴求点リスト", status: "ongoing" },
-        { id: 2, stage_zh: "2. 新产品定义期", stage_ja: "2. 新製品定義", name_zh: "市场调研/初测/品牌考量，95%锁定规格与报价", name_ja: "市場調査・初期評価・95%仕様および見積確定", plan: "第 3 周", actual: "", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "95%锁定PRD与阶梯报价", deliverable_ja: "95%確定PRD＋段階見積書", status: "pending" },
-        { id: 3, stage_zh: "3. 第二次产品测试", stage_ja: "3. 二次試作評価", name_zh: "二次样机测试，发现问题并记录改善点清单", name_ja: "二次試作実車評価、課題抽出と改善点リスト作成", plan: "第 6 周", actual: "", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "《二次测试问题改善单》", deliverable_ja: "《二次試作改善確認シート》", status: "pending" },
-        { id: 8, stage_zh: "4. 并行：正式发注书", stage_ja: "4. 並行：工場正式発注書(PO)", name_zh: "正式发注书下达给工厂(锁定生产配额与商务)", name_ja: "工場へ正式発注書(PO)発行・量産枠確保", plan: "第 8 周", actual: "", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "正式签字生效 PO 发注书", deliverable_ja: "正式調印済 PO発注書", status: "pending", larkUrl: "" },
-        { id: 9, stage_zh: "4. 并行：安排网红样品共行", stage_ja: "4. 并行：KOLサンプル発送", name_zh: "安排网红/KOL评测样机寄送与联络排期", name_ja: "KOL・インフルエンサー評価サンプル発送・日程FIX", plan: "第 8 周", actual: "", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "KOL寄送登记与排期表", deliverable_ja: "KOL発送管理表＋スケジュール表", status: "pending", larkUrl: "" },
-        { id: 4, stage_zh: "4. 并行：测试报告与卖点输出", stage_ja: "4. 並行：試験報告・訴求点確定", name_zh: "安排产品相关测试报告(输出核心卖点供运营美工)", name_ja: "各種試験報告書作成（LPデザイン訴求用）", plan: "第 8 周", actual: "", owner_zh: "企划", owner_ja: "企画", deliverable_zh: "权威实测报告 + 卖点对照表", deliverable_ja: "実測試験報告書＋訴求点対照表", status: "pending", larkUrl: "" },
-        { id: 5, stage_zh: "4. 并行：彩盒制作与最晚印刷时间", stage_ja: "4. 並行：化粧箱デザイン・最晩印刷FIX", name_zh: "包装结构刀模图：彩盒盒型(飞机盒/扣底确认)及最晚印刷封样", name_ja: "パッケージ抜型図面：化粧箱(地獄底/開口確定)＋印刷校正承認", plan: "第 9 周", actual: "", owner_zh: "企划/设计", owner_ja: "企画/デザイン", deliverable_zh: "彩盒工程刀模图+打样封样件", deliverable_ja: "化粧箱抜型図面＋印刷校正現品承認", status: "pending", larkUrl: "" },
-        { id: 6, stage_zh: "4. 并行：外箱箱规与最晚制作时间", stage_ja: "4. 並行：外箱仕様・最晩印刷FIX", name_zh: "外箱箱规设计：K=K重型外箱抗震抗压标准与外箱唛头印刷封样最晚时间", name_ja: "K=K高強度外箱仕様確定・カートンマーク最晩印刷承認", plan: "第 9 周", actual: "", owner_zh: "企划/设计", owner_ja: "企画/デザイン", deliverable_zh: "K=K外箱箱规图+正侧唛头印刷文件", deliverable_ja: "K=K外箱仕様書＋カートンマークデータ", status: "pending", larkUrl: "" },
-        { id: 7, stage_zh: "4. 并行：说明书定稿与最晚印刷时间", stage_ja: "4. 並行：取扱説明書最終FIX・最晩印刷FIX", name_zh: "说明书定审：中日双语/PL法合规审查及印刷最晚定稿排期", name_ja: "取扱説明書日本語校正・PL法準拠審査・最晩印刷FIX", plan: "第 10 周", actual: "", owner_zh: "企划/设计", owner_ja: "企画/デザイン", deliverable_zh: "说明书日文定稿印刷版(PDF)", deliverable_ja: "取扱説明書日本語最終印刷データ(PDF)", status: "pending", larkUrl: "" },
-        { id: 10, stage_zh: "5. 美工最终版网页时间", stage_ja: "5. LPデザイン最終FIX", name_zh: "美工完成最终版网页/详情页视觉与排版", name_ja: "デザイナー最終版WEBページ/LPビジュアル完成", plan: "第 11 周", actual: "", owner_zh: "运营/美工", owner_ja: "運用/デザイナー", deliverable_zh: "详情页视觉全套定稿", deliverable_ja: "LPデザインデータ全套納品", status: "pending" },
-        { id: 11, stage_zh: "6. 网页上架的时间", stage_ja: "6. WEB販売ページ公開", name_zh: "网页正式上架(Makuake众筹开售 / 电商上架)", name_ja: "WEB販売ページ公開（Makuake/モール販売開始）", plan: "第 12 周", actual: "", owner_zh: "运营", owner_ja: "運用", deliverable_zh: "正式发售上线", deliverable_ja: "正式販売ページ公開完了", status: "pending" },
-        { id: 12, stage_zh: "7. 网红视频发布时间", stage_ja: "7. インフルエンサー動画公開", name_zh: "网红评测视频与社交媒体内容集中发布引流", name_ja: "インフルエンサーレビュー動画公開・拡散", plan: "第 13 周", actual: "", owner_zh: "PR", owner_ja: "PR/広報", deliverable_zh: "全网测评视频爆发", deliverable_ja: "YouTubeレビュー動画配信", status: "pending" },
-        { id: 13, stage_zh: "8. 工厂交期", stage_ja: "8. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・出荷前OQC検査合格", plan: "第 15 周", actual: "", owner_zh: "采购", owner_ja: "調達/購買", deliverable_zh: "大货出厂检验单", deliverable_ja: "出荷前品質検査成績書", status: "pending" },
-        { id: 14, stage_zh: "9. 货到京东仓库的时间", stage_ja: "9. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "日本通関完了・京東海外倉庫正式入庫完了", plan: targetDateStr || "第 16 周", actual: "", owner_zh: "采购", owner_ja: "調達/物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫受入完了証", status: "pending" },
-        { id: 15, stage_zh: "10. 消费者发货时间", stage_ja: "10. 支援者・顧客発送", name_zh: "首批现货或众筹订单正式发货给消费者", name_ja: "支援者・エンドユーザー向け発送完了", plan: "第 17 周", actual: "", owner_zh: "运营", owner_ja: "国内発送/運用", deliverable_zh: "快递发货清单与单号", deliverable_ja: "出荷伝票番号一覧", status: "pending" }
+        { id: 1, stage_zh: "1. 新产品发布期", stage_ja: "1. 新製品発表", name_zh: "确定初版规格、初步价格、初样及差异化卖点", name_ja: "初期仕様・概算価格・初試作・差別化ポイント確定", plan: "第 1 周", actual: "", owner_zh: "企划部", owner_ja: "企画部", deliverable_zh: "初样机 + 卖点表", deliverable_ja: "初試作機＋訴求点リスト", status: "ongoing" },
+        { id: 2, stage_zh: "2. 新产品定义期", stage_ja: "2. 新製品定義", name_zh: "市场调研/初测/品牌考量，95%锁定规格与报价", name_ja: "市場調査・初期評価・95%仕様および見積確定", plan: "第 3 周", actual: "", owner_zh: "产品/采购", owner_ja: "製品/調達", deliverable_zh: "95%锁定PRD与阶梯报价", deliverable_ja: "95%確定PRD＋段階見積書", status: "pending" },
+        { id: 3, stage_zh: "3. 第二次产品测试", stage_ja: "3. 二次試作評価", name_zh: "二次样机测试，发现问题并记录改善点清单", name_ja: "二次試作実車評価、課題抽出と改善点リスト作成", plan: "第 6 周", actual: "", owner_zh: "研发技术组", owner_ja: "研究開発技術部", deliverable_zh: "《二次测试问题改善单》", deliverable_ja: "《二次試作改善確認シート》", status: "pending" },
+        { id: 8, stage_zh: "4. 并行：正式发注书", stage_ja: "4. 並行：工場正式発注書(PO)", name_zh: "正式发注书下达给工厂(锁定生产配额与商务)", name_ja: "工場へ正式発注書(PO)発行・量産枠確保", plan: "第 8 周", actual: "", owner_zh: "采购部", owner_ja: "調達部", deliverable_zh: "正式签字生效 PO 发注书", deliverable_ja: "正式調印済 PO発注書", status: "pending", larkUrl: "" },
+        { id: 9, stage_zh: "4. 并行：安排网红样品共行", stage_ja: "4. 并行：KOLサンプル発送", name_zh: "安排网红/KOL评测样机寄送与联络排期", name_ja: "KOL・インフルエンサー評価サンプル発送・日程FIX", plan: "第 8 周", actual: "", owner_zh: "海外运营", owner_ja: "海外運用", deliverable_zh: "KOL寄送登记与排期表", deliverable_ja: "KOL発送管理表＋スケジュール表", status: "pending", larkUrl: "" },
+        { id: 4, stage_zh: "4. 并行：测试报告与卖点输出", stage_ja: "4. 並行：試験報告・訴求点確定", name_zh: "安排产品相关测试报告(输出核心卖点供运营美工)", name_ja: "各種試験報告書作成（LPデザイン訴求用）", plan: "第 8 周", actual: "", owner_zh: "品质部", owner_ja: "品質部", deliverable_zh: "权威实测报告 + 卖点对照表", deliverable_ja: "実測試験報告書＋訴求点対照表", status: "pending", larkUrl: "" },
+        { id: 5, stage_zh: "4. 并行：彩盒制作与最晚印刷时间", stage_ja: "4. 並行：化粧箱デザイン・最晩印刷FIX", name_zh: "包装结构刀模图：彩盒盒型(飞机盒/扣底确认)及最晚印刷封样", name_ja: "パッケージ抜型図面：化粧箱(地獄底/開口確定)＋印刷校正承認", plan: "第 9 周", actual: "", owner_zh: "包装设计", owner_ja: "パッケージ設計", deliverable_zh: "彩盒工程刀模图+打样封样件", deliverable_ja: "化粧箱抜型図面＋印刷校正現品承認", status: "pending", larkUrl: "" },
+        { id: 6, stage_zh: "4. 并行：外箱箱规与最晚制作时间", stage_ja: "4. 並行：外箱仕様・最晩印刷FIX", name_zh: "外箱箱规设计：K=K重型外箱抗震抗压标准与外箱唛头印刷封样最晚时间", name_ja: "K=K高強度外箱仕様確定・カートンマーク最晩印刷承認", plan: "第 9 周", actual: "", owner_zh: "结构工程/仓储", owner_ja: "構造設計/物流", deliverable_zh: "K=K外箱箱规图+正侧唛头印刷文件", deliverable_ja: "K=K外箱仕様書＋カートンマークデータ", status: "pending", larkUrl: "" },
+        { id: 7, stage_zh: "4. 并行：说明书定稿与最晚印刷时间", stage_ja: "4. 並行：取扱説明書最終FIX・最晩印刷FIX", name_zh: "说明书定审：中日双语/PL法合规审查及印刷最晚定稿排期", name_ja: "取扱説明書日本語校正・PL法準拠審査・最晩印刷FIX", plan: "第 10 周", actual: "", owner_zh: "包装设计/运营", owner_ja: "パッケージ設計/運用", deliverable_zh: "说明书日文定稿印刷版(PDF)", deliverable_ja: "取扱説明書日本語最終印刷データ(PDF)", status: "pending", larkUrl: "" },
+        { id: 10, stage_zh: "5. 美工最终版网页时间", stage_ja: "5. LPデザイン最終FIX", name_zh: "美工完成最终版网页/详情页视觉与排版", name_ja: "デザイナー最終版WEBページ/LPビジュアル完成", plan: "第 11 周", actual: "", owner_zh: "设计部", owner_ja: "デザイン部", deliverable_zh: "详情页视觉全套定稿", deliverable_ja: "LPデザインデータ全套納品", status: "pending" },
+        { id: 11, stage_zh: "6. 网页上架的时间", stage_ja: "6. WEB販売ページ公開", name_zh: "网页正式上架(Makuake众筹开售 / 电商上架)", name_ja: "WEB販売ページ公開（Makuake/モール販売開始）", plan: "第 12 周", actual: "", owner_zh: "日本团队", owner_ja: "日本チーム", deliverable_zh: "正式发售上线", deliverable_ja: "正式販売ページ公開完了", status: "pending" },
+        { id: 12, stage_zh: "7. 网红视频发布时间", stage_ja: "7. インフルエンサー動画公開", name_zh: "网红评测视频与社交媒体内容集中发布引流", name_ja: "インフルエンサーレビュー動画公開・拡散", plan: "第 13 周", actual: "", owner_zh: "营销推广", owner_ja: "マーケティング", deliverable_zh: "全网测评视频爆发", deliverable_ja: "YouTubeレビュー動画配信", status: "pending" },
+        { id: 13, stage_zh: "8. 工厂交期", stage_ja: "8. 工場量産完了・OQC", name_zh: "工厂量产大货完成并完成出厂 OQC 检验", name_ja: "工場量産完了・出荷前OQC検査合格", plan: "第 15 周", actual: "", owner_zh: "工厂生产部", owner_ja: "工場製造部", deliverable_zh: "大货出厂检验单", deliverable_ja: "出荷前品質検査成績書", status: "pending" },
+        { id: 14, stage_zh: "9. 货到京东仓库的时间", stage_ja: "9. 京東倉庫正式納品完了", name_zh: "货品清关完成，正式入库京东仓库完结", name_ja: "日本通関完了・京東海外倉庫正式入庫完了", plan: targetDateStr || "第 16 周", actual: "", owner_zh: "供应链物流", owner_ja: "SCM物流", deliverable_zh: "京东仓库正品入库单", deliverable_ja: "京東倉庫受入完了証", status: "pending" },
+        { id: 15, stage_zh: "10. 消费者发货时间", stage_ja: "10. 支援者・顧客発送", name_zh: "首批现货或众筹订单正式发货给消费者", name_ja: "支援者・エンドユーザー向け発送完了", plan: "第 17 周", actual: "", owner_zh: "日本仓储运营", owner_ja: "日本国内発送チーム", deliverable_zh: "快递发货清单与单号", deliverable_ja: "出荷伝票番号一覧", status: "pending" }
       ];
     }
 
     // ================= Data Store & System Version Lifecycle =================
     // Whenever a new system generation is released, update SYSTEM_VERSION to auto-purge legacy stored data
-    const SYSTEM_VERSION = "v20_updated_owners_hierarchy";
+    const SYSTEM_VERSION = "v19_reorder_po_kol_and_packaging";
     const VERSION_STORAGE_KEY = "mitsukin_pms_current_system_version";
     const STORAGE_KEY = "mitsukin_pms_projects_" + SYSTEM_VERSION;
     const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_" + SYSTEM_VERSION;
