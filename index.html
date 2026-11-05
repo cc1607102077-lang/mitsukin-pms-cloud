@@ -177,8 +177,11 @@
         <button onclick="lockSystem()" class="px-2.5 py-2 rounded-xl border border-slate-200 text-slate-500 text-xs hover:text-indigo-600 hover:bg-slate-50 transition" title="立即锁定屏幕">
           <span>🔒</span> <span id="btnLockText">锁屏</span>
         </button>
-        <button onclick="backupAllData()" class="px-3 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition shadow-sm" title="导出备份 JSON">
-          <span>💾</span> <span id="btnBackupText">备份</span>
+        <button onclick="backupAllData()" class="px-3 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition shadow-sm flex items-center gap-1" title="导出备份 JSON 并复制配置">
+          <span>💾</span> <span id="btnBackupText">备份/导出</span>
+        </button>
+        <button onclick="openRestoreDataModal()" class="px-3 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition shadow-sm flex items-center gap-1" title="导入或恢复数据 JSON">
+          <span>📥</span> <span id="btnRestoreText">导入恢复</span>
         </button>
         <button onclick="resetToInitialDefaults()" class="px-2.5 py-2 rounded-xl border border-slate-200 text-slate-400 text-xs hover:text-red-600 transition flex items-center gap-1" title="彻底删除旧系统记录并重新生成最新系统" id="btnResetSystem">
           <span>🔄</span> <span id="btnResetText">重置系统</span>
@@ -1559,6 +1562,41 @@
     </div>
   </div>
 
+  <!-- Modal: Restore / Import Data JSON -->
+  <div id="restoreDataModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center p-3 md:p-6 overflow-y-auto">
+    <div class="bg-white rounded-3xl border border-slate-200 max-w-lg w-full p-6 shadow-2xl space-y-4 my-auto">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+        <h3 class="text-base font-black text-slate-900 flex items-center gap-2">
+          <span>📥</span> <span>导入 / 恢复数据配置 (Import PMS Data)</span>
+        </h3>
+        <button onclick="closeRestoreDataModal()" class="w-8 h-8 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center text-base transition">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-600">
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-[11px] leading-relaxed text-indigo-900">
+          💡 <strong>支持任意备份数据恢复：</strong>无论您是使用下载的 <code class="bg-white px-1 py-0.5 rounded text-indigo-700 font-mono">.json</code> 备份文件，还是直接复制 JSON 文本，均可一键恢复您的自定义排序与全部改动。
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">方式一：选择本地备份文件 (.json)</label>
+          <input type="file" accept=".json,application/json" onchange="handleRestoreFileSelect(event)" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">方式二：直接粘贴 JSON 文本内容</label>
+          <textarea id="restoreJsonInput" rows="6" placeholder="请在此处直接粘贴备份的 JSON 数据..." class="w-full p-2.5 font-mono text-[11px] border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50/70 custom-scroll"></textarea>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+        <button onclick="closeRestoreDataModal()" class="px-4 py-2 border border-slate-300 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-50 transition">取消</button>
+        <button onclick="confirmRestoreData()" class="px-5 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold hover:bg-indigo-700 transition shadow flex items-center gap-1.5">
+          <span>✓</span> <span>确认恢复并保存</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal: Edit / Add Milestone -->
   <div id="milestoneModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center p-3 md:p-6 overflow-y-auto">
     <div class="bg-white rounded-3xl border border-slate-200 max-w-lg w-full p-6 shadow-2xl space-y-4 my-auto max-h-[92vh] flex flex-col">
@@ -1684,7 +1722,8 @@
         btnNewProject: "新建产品立项",
         btnChangePin: "密码设置",
         btnLock: "锁屏",
-        btnBackup: "备份",
+        btnBackup: "备份/导出",
+        btnRestore: "导入恢复",
         btnReset: "重置系统",
         sopBannerTitle: "三金商事・标准产品生命周期全链路（12 大严密节点・至消费者发货）",
         sopBannerBadge: "公司统一研发标准流程",
@@ -1785,6 +1824,7 @@
         btnChangePin: "パスワード設定",
         btnLock: "ロック",
         btnBackup: "バックアップ",
+        btnRestore: "データ復元",
         btnReset: "リセット",
         sopBannerTitle: "株式会社三金商事・標準製品ライフサイクル全工程（12大重要マイルストーン・顧客納品まで）",
         sopBannerBadge: "全社共通開発SOP基準",
@@ -2083,12 +2123,11 @@
       ];
     }
 
-    // ================= Data Store & System Version Lifecycle =================
-    // Whenever a new system generation is released, update SYSTEM_VERSION to auto-purge legacy stored data
-    const SYSTEM_VERSION = "v31_add_stage9_inspection_report_milestone";
+    // ================= Data Store & Non-Destructive Persistent Lifecycle =================
+    const SYSTEM_VERSION = "v32_persistent_user_data_migration";
     const VERSION_STORAGE_KEY = "mitsukin_pms_current_system_version";
-    const STORAGE_KEY = "mitsukin_pms_projects_" + SYSTEM_VERSION;
-    const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_" + SYSTEM_VERSION;
+    const STORAGE_KEY = "mitsukin_pms_projects_persistent_v1";
+    const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_persistent_v1";
     let pmsData = {};
     let projectOrder = [];
     let isDraggingCard = false;
@@ -2109,38 +2148,71 @@
       }, 4000);
     }
 
-    // Purge previous recorded systems whenever a new system is generated/deployed
-    function purgeLegacyRecordedSystems() {
+    // Smart Rescue & Migration: NEVER delete user data, always rescue legacy version data forward!
+    function rescueAndMigrateLegacyData() {
       try {
-        const savedVersion = localStorage.getItem(VERSION_STORAGE_KEY);
-        if (savedVersion !== SYSTEM_VERSION) {
-          console.log(`[PMS System] New system generation detected (${SYSTEM_VERSION}, previous: ${savedVersion || 'legacy'}). Purging previous recorded system storage...`);
-          
-          const keysToDelete = [];
+        let rescuedDataStr = localStorage.getItem(STORAGE_KEY);
+        let rescuedOrderStr = localStorage.getItem(ORDER_STORAGE_KEY);
+
+        // If persistent key not yet initialized, search across all previous version keys to rescue user data
+        if (!rescuedDataStr) {
+          const projectKeys = [];
           for (let i = 0; i < localStorage.length; i++) {
             const k = localStorage.key(i);
-            if (k && (
-              k.startsWith("mitsukin_pms_projects") || 
-              k.startsWith("mitsukin_pms_project_order")
-            ) && k !== STORAGE_KEY && k !== ORDER_STORAGE_KEY) {
-              keysToDelete.push(k);
+            if (k && k.startsWith("mitsukin_pms_projects") && k !== STORAGE_KEY) {
+              projectKeys.push(k);
             }
           }
-
-          keysToDelete.forEach(k => {
-            localStorage.removeItem(k);
-            console.log(`[PMS System] Removed previous recorded system storage key: ${k}`);
-          });
-
-          localStorage.setItem(VERSION_STORAGE_KEY, SYSTEM_VERSION);
-          setTimeout(() => {
-            showToast(currentLang === "ja" 
-              ? "✨ 旧バージョンの記録をクリーンアップし、包材・外箱・取説の個別期日管理システムを読み込みました。" 
-              : "✨ 已自动清理旧版系统记录与缓存，成功生成并载入最新规范与 Lark 在线协同体系！");
-          }, 400);
+          // Sort descending so the most recent version (e.g. v31, v30, v29) is checked first
+          projectKeys.sort().reverse();
+          for (const k of projectKeys) {
+            const v = localStorage.getItem(k);
+            if (v) {
+              try {
+                const parsed = JSON.parse(v);
+                if (parsed && typeof parsed === "object" && Object.keys(parsed).length > 0) {
+                  rescuedDataStr = v;
+                  console.log(`[PMS System] Successfully rescued user project data from legacy key: ${k}`);
+                  break;
+                }
+              } catch (e) {}
+            }
+          }
         }
+
+        if (!rescuedOrderStr) {
+          const orderKeys = [];
+          for (let i = 0; i < localStorage.length; i++) {
+            const k = localStorage.key(i);
+            if (k && k.startsWith("mitsukin_pms_project_order") && k !== ORDER_STORAGE_KEY) {
+              orderKeys.push(k);
+            }
+          }
+          orderKeys.sort().reverse();
+          for (const k of orderKeys) {
+            const v = localStorage.getItem(k);
+            if (v) {
+              try {
+                const parsed = JSON.parse(v);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                  rescuedOrderStr = v;
+                  console.log(`[PMS System] Successfully rescued user card order from legacy key: ${k}`);
+                  break;
+                }
+              } catch (e) {}
+            }
+          }
+        }
+
+        if (rescuedDataStr && !localStorage.getItem(STORAGE_KEY)) {
+          localStorage.setItem(STORAGE_KEY, rescuedDataStr);
+        }
+        if (rescuedOrderStr && !localStorage.getItem(ORDER_STORAGE_KEY)) {
+          localStorage.setItem(ORDER_STORAGE_KEY, rescuedOrderStr);
+        }
+        localStorage.setItem(VERSION_STORAGE_KEY, SYSTEM_VERSION);
       } catch (err) {
-        console.warn("[PMS System] Failed during legacy system purge:", err);
+        console.warn("[PMS System] Error during data rescue/migration:", err);
       }
     }
 
@@ -2150,7 +2222,7 @@
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed)) {
+          if (Array.isArray(parsed) && parsed.length > 0) {
             const valid = parsed.filter(k => dataKeys.includes(k));
             dataKeys.forEach(k => {
               if (!valid.includes(k)) valid.push(k);
@@ -2193,21 +2265,59 @@
     }
 
     function loadPMSData() {
-      // 1. Automatically wipe out previous recorded systems upon new system detection
-      purgeLegacyRecordedSystems();
+      // 1. Rescue any existing legacy version data first (never purge!)
+      rescueAndMigrateLegacyData();
 
-      // 2. Load current version or initialize fresh
+      // 2. Load from persistent storage
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         try {
           pmsData = JSON.parse(saved);
-          // Safety check: ensure all 4 default projects exist even if previously missing
-          Object.keys(initialRealProducts).forEach(k => {
-            if (!pmsData[k]) {
-              pmsData[k] = JSON.parse(JSON.stringify(initialRealProducts[k]));
+
+          // Deep merge: ensure all 4 default projects exist while preserving all user modifications
+          Object.keys(initialRealProducts).forEach(pid => {
+            if (!pmsData[pid]) {
+              pmsData[pid] = JSON.parse(JSON.stringify(initialRealProducts[pid]));
+            } else {
+              // Ensure any newly added standard milestones from code (such as Stage 9 验货报告)
+              // are seamlessly merged in without altering any existing user edited dates or status!
+              const codeMilestones = initialRealProducts[pid].milestones || [];
+              const userMilestones = pmsData[pid].milestones || [];
+
+              codeMilestones.forEach(cm => {
+                const cmStageNum = getStageNumber(cm.stage_zh);
+                const cmName = cm.name_zh || "";
+                const isCmInspection = cmName.includes("验货") || (cm.stage_zh && cm.stage_zh.includes("验货"));
+
+                // Check if user already has this milestone
+                const hasMatch = userMilestones.some(um => {
+                  const umStageNum = getStageNumber(um.stage_zh);
+                  const umName = um.name_zh || "";
+                  if (isCmInspection && (umName.includes("验货") || (um.stage_zh && um.stage_zh.includes("验货")))) return true;
+                  if (cmStageNum && umStageNum && cmStageNum === umStageNum) return true;
+                  return false;
+                });
+
+                if (!hasMatch) {
+                  console.log(`[PMS System] Seamlessly inserting standard milestone '${cm.name_zh}' into project ${pid}`);
+                  const targetNum = parseInt(cmStageNum, 10) || 999;
+                  let insertIdx = userMilestones.length;
+                  for (let i = 0; i < userMilestones.length; i++) {
+                    const sNum = parseInt(getStageNumber(userMilestones[i].stage_zh), 10) || 0;
+                    if (sNum > targetNum) {
+                      insertIdx = i;
+                      break;
+                    }
+                  }
+                  userMilestones.splice(insertIdx, 0, JSON.parse(JSON.stringify(cm)));
+                }
+              });
+
+              pmsData[pid].milestones = userMilestones;
             }
           });
-          // Safety check: ensure testReports are populated and synced for all projects
+
+          // Safety check: ensure testReports are populated and synced
           Object.keys(pmsData).forEach(k => {
             if (!pmsData[k].testReports || !Array.isArray(pmsData[k].testReports) || pmsData[k].testReports.length === 0) {
               pmsData[k].testReports = getInitialTestReportsData(k);
@@ -2215,15 +2325,17 @@
             }
           });
 
-          // Safety check: ensure multi-SKU architecture is populated for ignic_sp_bc122_127
-          if (pmsData["ignic_sp_bc122_127"] && (!pmsData["ignic_sp_bc122_127"].stage1Research || !pmsData["ignic_sp_bc122_127"].stage1Research.skus || pmsData["ignic_sp_bc122_127"].stage1Research.skus.length < 2)) {
-            pmsData["ignic_sp_bc122_127"].stage1Research = getInitialStage1ResearchData("ignic_sp_bc122_127");
-            savePMSData();
+          // Multi-SKU safety checks for ignic_sp_bc122_127
+          if (pmsData["ignic_sp_bc122_127"]) {
+            if (!pmsData["ignic_sp_bc122_127"].stage1Research || !pmsData["ignic_sp_bc122_127"].stage1Research.skus) {
+              pmsData["ignic_sp_bc122_127"].stage1Research = getInitialStage1ResearchData("ignic_sp_bc122_127");
+            }
+            if (!pmsData["ignic_sp_bc122_127"].stage2Prd || !pmsData["ignic_sp_bc122_127"].stage2Prd.skus) {
+              pmsData["ignic_sp_bc122_127"].stage2Prd = getInitialStage2PrdData("ignic_sp_bc122_127");
+            }
           }
-          if (pmsData["ignic_sp_bc122_127"] && (!pmsData["ignic_sp_bc122_127"].stage2Prd || !pmsData["ignic_sp_bc122_127"].stage2Prd.skus)) {
-            pmsData["ignic_sp_bc122_127"].stage2Prd = getInitialStage2PrdData("ignic_sp_bc122_127");
-            savePMSData();
-          }
+
+          savePMSData();
         } catch (e) {
           pmsData = JSON.parse(JSON.stringify(initialRealProducts));
           savePMSData();
@@ -2232,6 +2344,7 @@
         pmsData = JSON.parse(JSON.stringify(initialRealProducts));
         savePMSData();
       }
+
       loadProjectOrder();
     }
 
@@ -2404,6 +2517,7 @@
       document.getElementById("btnChangePinText").innerText = t.btnChangePin;
       document.getElementById("btnLockText").innerText = t.btnLock;
       document.getElementById("btnBackupText").innerText = t.btnBackup;
+      if (document.getElementById("btnRestoreText")) document.getElementById("btnRestoreText").innerText = t.btnRestore;
       document.getElementById("btnResetText").innerText = t.btnReset;
 
       document.getElementById("sopBannerTitle").innerHTML = `<span>📌</span> ${t.sopBannerTitle}`;
@@ -3865,11 +3979,95 @@ ${ongoingList || '按期受控推进中'}
     }
 
     function backupAllData() {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pmsData, null, 2));
+      const exportObj = {
+        app: "MITSUKIN_Bilingual_PMS",
+        version: SYSTEM_VERSION,
+        exportedAt: new Date().toISOString(),
+        projectOrder: projectOrder,
+        projects: pmsData
+      };
+      const jsonStr = JSON.stringify(exportObj, null, 2);
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonStr);
       const dlAnchor = document.createElement('a');
       dlAnchor.setAttribute("href", dataStr);
-      dlAnchor.setAttribute("download", `MITSUKIN_Bilingual_PMS_Backup_${new Date().toISOString().slice(0,10)}.json`);
+      dlAnchor.setAttribute("download", `MITSUKIN_PMS_Backup_${new Date().toISOString().slice(0,10)}.json`);
       dlAnchor.click();
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(jsonStr).then(() => {
+          showToast(currentLang === 'ja'
+            ? "💾 バックアップファイルをダウンロードし、全データをクリップボードにコピーしました！"
+            : "💾 备份 JSON 已成功下载！同时已复制到剪贴板，您可以随时发给助手。");
+        }).catch(() => {
+          showToast(currentLang === 'ja' ? "💾 バックアップファイルをダウンロードしました。" : "💾 备份文件已下载！");
+        });
+      } else {
+        showToast(currentLang === 'ja' ? "💾 バックアップファイルをダウンロードしました。" : "💾 备份文件已下载！");
+      }
+    }
+
+    function openRestoreDataModal() {
+      document.getElementById("restoreDataModal").classList.remove("hidden");
+    }
+
+    function closeRestoreDataModal() {
+      document.getElementById("restoreDataModal").classList.add("hidden");
+    }
+
+    function handleRestoreFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById("restoreJsonInput").value = e.target.result;
+      };
+      reader.readAsText(file);
+    }
+
+    function confirmRestoreData() {
+      const text = document.getElementById("restoreJsonInput").value.trim();
+      if (!text) {
+        alert(currentLang === 'ja' ? "JSONデータを入力するか、ファイルを選択してください。" : "请输入 JSON 内容或选择备份文件！");
+        return;
+      }
+      try {
+        const parsed = JSON.parse(text);
+        let importedProjects = null;
+        let importedOrder = null;
+
+        if (parsed.projects && typeof parsed.projects === 'object') {
+          importedProjects = parsed.projects;
+          if (Array.isArray(parsed.projectOrder)) importedOrder = parsed.projectOrder;
+        } else if (typeof parsed === 'object') {
+          importedProjects = parsed;
+        }
+
+        if (!importedProjects || Object.keys(importedProjects).length === 0) {
+          throw new Error("Invalid projects data structure");
+        }
+
+        pmsData = importedProjects;
+        savePMSData();
+
+        if (importedOrder && Array.isArray(importedOrder) && importedOrder.length > 0) {
+          projectOrder = importedOrder;
+          saveProjectOrder();
+        } else {
+          projectOrder = Object.keys(pmsData);
+          saveProjectOrder();
+        }
+
+        closeRestoreDataModal();
+        if (activeProjectId && pmsData[activeProjectId]) {
+          renderDetailTable();
+        } else {
+          renderHubCards();
+        }
+        renderSopBanner();
+        showToast(currentLang === 'ja' ? "🎉 データを正常に復元しました！" : "🎉 数据已成功恢复并永久保存！");
+      } catch (err) {
+        alert(currentLang === 'ja' ? "JSON形式が無効です: " + err.message : "JSON 格式解析失败，请检查内容是否有效: " + err.message);
+      }
     }
 
     // ================= Privacy & PIN Authentication =================
