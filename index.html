@@ -1160,6 +1160,173 @@
     </div>
   </div>
 
+  
+  <!-- ============================================================== -->
+  <!-- Modal: Test Reports & Selling Points Matrix (实测报告与卖点验证中心) -->
+  <!-- ============================================================== -->
+  <div id="testReportsModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[9990] flex items-center justify-center p-3 md:p-6 overflow-y-auto">
+    <div class="bg-white rounded-3xl border border-slate-200 max-w-5xl w-full p-6 md:p-8 shadow-2xl space-y-5 my-auto max-h-[92vh] flex flex-col">
+      <!-- Modal Header -->
+      <div class="flex justify-between items-start pb-4 border-b border-slate-100 shrink-0">
+        <div class="flex items-start gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 text-white flex items-center justify-center text-2xl font-black shadow-md shadow-amber-200 shrink-0">
+            🧪
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 class="text-lg font-black text-slate-900" id="testReportsModalTitle">
+                实测报告与卖点宣传验证中心 (Test Reports & Selling Points Matrix)
+              </h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-100 text-amber-800 border border-amber-200" id="testReportsModalBadge">
+                🔬 核心宣传证据流保障
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 mt-1" id="testReportsModalSub">
+              三金企划 × 工厂研发实验室｜每一份实测报告对应一项核心宣传卖点，为众筹页面与电商详情页提供真实有力的证据流。
+            </p>
+          </div>
+        </div>
+        <button onclick="closeTestReportsModal()" class="w-8 h-8 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 flex items-center justify-center text-base transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 shrink-0">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 text-center">
+          <div class="text-[11px] font-bold text-slate-500" id="trKpiLabelTotal">实测报告总数</div>
+          <div class="text-xl font-black text-slate-900 mt-0.5" id="trKpiTotal">0</div>
+        </div>
+        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-3 text-center">
+          <div class="text-[11px] font-bold text-emerald-700" id="trKpiLabelPassed">已出具・合格通过</div>
+          <div class="text-xl font-black text-emerald-700 mt-0.5" id="trKpiPassed">0</div>
+        </div>
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-3 text-center">
+          <div class="text-[11px] font-bold text-amber-700" id="trKpiLabelOngoing">测试中・待工厂出具</div>
+          <div class="text-xl font-black text-amber-700 mt-0.5" id="trKpiOngoing">0</div>
+        </div>
+        <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-3 text-center">
+          <div class="text-[11px] font-bold text-indigo-700" id="trKpiLabelPoints">覆盖核心宣传卖点</div>
+          <div class="text-xl font-black text-indigo-700 mt-0.5" id="trKpiPoints">0</div>
+        </div>
+      </div>
+
+      <!-- Action & Filter Bar -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 shrink-0 bg-slate-50/80 p-2.5 rounded-2xl border border-slate-200/80">
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-1.5 flex-wrap text-xs">
+          <button onclick="setTestReportsFilter('all')" id="btnTrFilterAll" class="px-3 py-1.5 rounded-xl font-bold bg-indigo-600 text-white transition shadow-2xs">
+            全部报告 (<span id="countTrAll">0</span>)
+          </button>
+          <button onclick="setTestReportsFilter('passed')" id="btnTrFilterPassed" class="px-3 py-1.5 rounded-xl font-bold text-slate-600 hover:bg-slate-200/60 transition">
+            已合格出具 (<span id="countTrPassed">0</span>)
+          </button>
+          <button onclick="setTestReportsFilter('ongoing')" id="btnTrFilterOngoing" class="px-3 py-1.5 rounded-xl font-bold text-slate-600 hover:bg-slate-200/60 transition">
+            测试中/待出具 (<span id="countTrOngoing">0</span>)
+          </button>
+        </div>
+        <!-- Right Action Buttons -->
+        <div class="flex items-center gap-2 flex-wrap">
+          <button onclick="copyTestReportsEvidenceSummary()" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-indigo-600 border border-slate-200 hover:border-indigo-300 transition shadow-2xs flex items-center gap-1.5" title="一键复制全部实测数据与卖点对应表，方便发给美工与运营撰写文案">
+            <span>📋</span> <span id="btnTextCopyEvidence">复制实测证据流(给美工/运营)</span>
+          </button>
+          <button onclick="toggleAddTestReportForm()" id="btnToggleAddReport" class="px-3.5 py-1.5 rounded-xl text-xs font-black bg-amber-600 hover:bg-amber-700 text-white transition shadow-sm flex items-center gap-1.5">
+            <span>+</span> <span id="btnTextAddReport">录入新实测报告与卖点</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Collapsible Add/Edit Form Card -->
+      <div id="testReportFormCard" class="hidden bg-gradient-to-br from-amber-50/60 to-orange-50/40 border-2 border-amber-300 rounded-2xl p-4 md:p-5 shadow-sm space-y-4 shrink-0 transition-all">
+        <div class="flex items-center justify-between pb-2 border-b border-amber-200/70">
+          <h4 class="text-sm font-black text-slate-900 flex items-center gap-2" id="trFormCardTitle">
+            <span>📝</span> <span>录入新实测报告与卖点验证项</span>
+          </h4>
+          <button onclick="toggleAddTestReportForm(false)" class="text-xs text-slate-400 hover:text-slate-600">✕ 取消</button>
+        </div>
+        <input type="hidden" id="trEditId" value="">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          <div>
+            <label class="block text-[11px] font-black text-slate-700 mb-1" id="lblTrNo">报告编号 / 批次 <span class="text-red-500">*</span></label>
+            <input type="text" id="trInputNo" placeholder="如：Q2026083" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-mono font-bold focus:ring-2 focus:ring-amber-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-[11px] font-black text-slate-700 mb-1" id="lblTrLab">出具机构 / 工厂实验室 <span class="text-red-500">*</span></label>
+            <input type="text" id="trInputLab" placeholder="如：易力科硬件可靠性实验室" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-amber-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-[11px] font-black text-slate-700 mb-1" id="lblTrDate">出具日期 / 计划日期</label>
+            <input type="text" id="trInputDate" placeholder="如：2026/11/05" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-mono focus:ring-2 focus:ring-amber-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-[11px] font-black text-slate-700 mb-1" id="lblTrStatus">验证状态 <span class="text-red-500">*</span></label>
+            <select id="trInputStatus" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none">
+              <option value="passed">✅ 已出具・合格通过</option>
+              <option value="in_progress">⏳ 测试中・等待工厂出具</option>
+              <option value="pending">⏱️ 待送样排期</option>
+              <option value="failed">❌ 未通过・需整改重测</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-black text-slate-700 mb-1" id="lblTrName">报告全称 / 检验项目 <span class="text-red-500">*</span></label>
+          <input type="text" id="trInputName" placeholder="如：IP65 级全天候防水防尘与户外淋雨实测报告" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500 outline-none">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-black text-amber-950 mb-1 flex items-center gap-1.5" id="lblTrPoint">
+            <span>🎯</span> <span>本报告验证的核心宣传卖点 (支撑 Makuake / 乐天 / 亚马逊详情页文案)</span> <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="trInputPoint" placeholder="如：【全天候安心充电】IP65 工业级防水防尘，洗车防淋、户外暴雨无漏电进水风险" class="w-full px-3 py-2 bg-amber-50/70 border-2 border-amber-300/80 rounded-xl text-xs font-bold text-amber-950 focus:bg-white focus:ring-2 focus:ring-amber-500 outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-black text-slate-700 mb-1" id="lblTrKeyData">关键实测数据 / 结论指标 (为美工提供数据做图)</label>
+            <textarea id="trInputKeyData" rows="2" placeholder="如：持续强力喷水30分钟内部零渗水，绝缘电阻>100MΩ，判定合格" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-amber-500 outline-none resize-none"></textarea>
+          </div>
+          <div class="space-y-2">
+            <div>
+              <label class="block text-[11px] font-black text-slate-700 mb-1" id="lblTrLark">报告原件 / Lark 协同文档链接 (选填)</label>
+              <input type="url" id="trInputLarkUrl" placeholder="如：https://mitsukin.sg.larksuite.com/..." class="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-xs font-mono focus:ring-2 focus:ring-amber-500 outline-none">
+            </div>
+            <div class="flex items-center gap-2 pt-1">
+              <input type="checkbox" id="trInputLpAdopted" class="w-4 h-4 rounded text-amber-600 focus:ring-amber-500 cursor-pointer">
+              <label for="trInputLpAdopted" class="text-xs font-bold text-slate-700 cursor-pointer select-none" id="lblTrLpAdopted">
+                美工详情页已采纳呈现 (已转化为视觉实测长图/实拍数据图)
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end items-center gap-2 pt-1">
+          <button type="button" onclick="toggleAddTestReportForm(false)" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-200/60 transition" id="btnCancelTrForm">
+            取消
+          </button>
+          <button type="button" onclick="saveTestReportItem()" class="px-5 py-2 rounded-xl text-xs font-black bg-amber-600 hover:bg-amber-700 text-white shadow-sm transition" id="btnSaveTrForm">
+            保存此报告与卖点验证
+          </button>
+        </div>
+      </div>
+
+      <!-- Reports List Container -->
+      <div id="testReportsListContainer" class="flex-1 overflow-y-auto space-y-3 pr-1 custom-scroll min-h-[220px]">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <div class="text-[11px] text-slate-500 flex items-center gap-1.5" id="trFooterTip">
+          <span>💡</span> <span>企划提示：实测数据是支撑 Makuake 众筹及电商爆单的核心信任资产。完成的实测报告将直接为美工详情页（步骤 5）提供证据流依据。</span>
+        </div>
+        <button onclick="closeTestReportsModal()" class="w-full sm:w-auto px-6 py-2.5 rounded-xl text-xs font-black bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition" id="btnCloseTrModal">
+          完成并同步至表格
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal: New Project -->
   <div id="newProjectModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl border border-slate-200 max-w-lg w-full p-6 shadow-2xl space-y-4">
@@ -1755,7 +1922,7 @@
 
     // ================= Data Store & System Version Lifecycle =================
     // Whenever a new system generation is released, update SYSTEM_VERSION to auto-purge legacy stored data
-    const SYSTEM_VERSION = "v22_step6_packaging_renumbering";
+    const SYSTEM_VERSION = "v23_test_reports_selling_points_matrix";
     const VERSION_STORAGE_KEY = "mitsukin_pms_current_system_version";
     const STORAGE_KEY = "mitsukin_pms_projects_" + SYSTEM_VERSION;
     const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_" + SYSTEM_VERSION;
@@ -1877,6 +2044,14 @@
               pmsData[k] = JSON.parse(JSON.stringify(initialRealProducts[k]));
             }
           });
+          // Safety check: ensure testReports are populated and synced for all projects
+          Object.keys(pmsData).forEach(k => {
+            if (!pmsData[k].testReports || !Array.isArray(pmsData[k].testReports) || pmsData[k].testReports.length === 0) {
+              pmsData[k].testReports = getInitialTestReportsData(k);
+              syncTestReportsToMilestoneDeliverable(pmsData[k]);
+            }
+          });
+
           // Safety check: ensure multi-SKU architecture is populated for ignic_sp_bc122_127
           if (pmsData["ignic_sp_bc122_127"] && (!pmsData["ignic_sp_bc122_127"].stage1Research || !pmsData["ignic_sp_bc122_127"].stage1Research.skus || pmsData["ignic_sp_bc122_127"].stage1Research.skus.length < 2)) {
             pmsData["ignic_sp_bc122_127"].stage1Research = getInitialStage1ResearchData("ignic_sp_bc122_127");
@@ -2652,10 +2827,13 @@
             const owner = getLangText(m, "owner");
             const stage = getLangText(m, "stage");
             const isParallel = stage && (stage.includes("并行") || stage.includes("並行"));
-                      const isManualDraft = (stage && (stage.includes("说明书草稿") || stage.includes("取説草案") || stage.includes("取扱説明書草稿"))) || (name && (name.includes("说明书研发核对版草稿") || name.includes("取説開発FIX版草案")));
-          const isPackagingDieline = (stage && (stage.includes("彩盒外箱刀模") || stage.includes("化粧箱・外箱抜型図面"))) || (name && (name.includes("包装结构刀模图") || name.includes("パッケージ抜型設計")));
+            const isManualDraft = (stage && (stage.includes("说明书草稿") || stage.includes("取説草案") || stage.includes("取扱説明書草稿"))) || (name && (name.includes("说明书研发核对版草稿") || name.includes("取説開発FIX版草案")));
+            const isPackagingDieline = (stage && (stage.includes("彩盒外箱刀模") || stage.includes("化粧箱・外箱抜型図面"))) || (name && (name.includes("包装结构刀模图") || name.includes("パッケージ抜型設計")));
+            const isTestReport = isTestReportMilestone(m);
 
-            const cardTitleClick = `onclick="openMilestoneModal(${m.originalIdx !== undefined ? m.originalIdx : milestones.indexOf(m)})"`;
+            const cardTitleClick = isTestReport
+              ? `onclick="openTestReportsModal('${activeProjectId}')"`
+              : `onclick="openMilestoneModal(${m.originalIdx !== undefined ? m.originalIdx : milestones.indexOf(m)})"`;
 
             const card = document.createElement("div");
             card.className = "bg-white rounded-xl border border-amber-200/90 p-3.5 shadow-2xs hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between group";
@@ -2669,8 +2847,9 @@
                     <span>📅</span> <strong class="text-amber-900">${m.plan || (isJa ? '未定' : '待定')}</strong>
                   </span>
                 </div>
-                <h4 class="text-xs font-black text-slate-900 group-hover:text-indigo-600 transition leading-snug line-clamp-2 min-h-[32px] cursor-pointer" ${cardTitleClick}>
-                  ${isManualDraft ? '📄 ' : (isPackagingDieline ? '📐 ' : '')}${name}
+                <h4 class="text-xs font-black text-slate-900 group-hover:text-amber-800 transition leading-snug line-clamp-2 min-h-[32px] cursor-pointer" ${cardTitleClick}>
+                  ${isTestReport ? '🧪 ' : (isManualDraft ? '📄 ' : (isPackagingDieline ? '📐 ' : ''))}${name}
+                  ${isTestReport ? `<span class="ml-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">${isJa ? '実証エビデンス' : '实测证据矩阵'}</span>` : ''}
                 </h4>
                 
                 <div class="mt-2 text-[11px] text-slate-600 bg-amber-50/40 p-2 rounded-lg border border-amber-100/80 space-y-1">
@@ -2843,6 +3022,7 @@
           const isStage2 = m.id === 2 || (stage && (stage.includes("新产品定义") || stage.includes("新製品定義")));
           const isManualDraft = (stage && (stage.includes("说明书草稿") || stage.includes("取説草案") || stage.includes("取扱説明書草稿") || stage.includes("说明书") || stage.includes("取扱説明書"))) && (name && (name.includes("说明书") || name.includes("取説") || name.includes("草稿") || name.includes("草案")));
           const isPackagingDieline = (stage && (stage.includes("彩盒外箱刀模") || stage.includes("刀模") || stage.includes("抜型") || stage.includes("包材図面"))) || (name && (name.includes("刀模") || name.includes("抜型") || name.includes("外箱箱规") || name.includes("包装结构")));
+          const isTestReport = isTestReportMilestone(m);
 
           let stageBadge = "";
           if (isStage1) {
@@ -2860,6 +3040,12 @@
             nameCellContent = `<span class="hover:text-indigo-600 cursor-pointer font-bold text-slate-900" onclick="openStage1ResearchModal('${activeProjectId}')" title="点击查看/编辑前期立项调研报告模板">${name}</span>`;
           } else if (isStage2) {
             nameCellContent = `<span class="hover:text-blue-600 cursor-pointer font-bold text-slate-900" onclick="openStage2PrdModal('${activeProjectId}')" title="点击查看/编辑新品定义PRD模板">${name}</span>`;
+          } else if (isTestReport) {
+            nameCellContent = `<span class="hover:text-amber-600 cursor-pointer font-bold text-slate-900 inline-flex items-center gap-1.5 flex-wrap" onclick="openTestReportsModal('${activeProjectId}')" title="${currentLang === 'ja' ? '試験報告書・訴求点エビデンスセンターを開く' : '点击打开实测报告与卖点宣传验证中心'}">
+              <span class="text-amber-500 text-sm">🧪</span>
+              <span>${name}</span>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-black bg-amber-100 text-amber-800 border border-amber-300 shadow-2xs">${currentLang === 'ja' ? '実証エビデンス' : '实测证据矩阵'}</span>
+            </span>`;
           } else {
             nameCellContent = `<span class="hover:text-indigo-600 cursor-pointer" onclick="openMilestoneModal(${idx})" title="点击编辑节点详情">${name}</span>`;
           }
@@ -2882,30 +3068,80 @@
                 class="w-24 text-center px-1.5 py-1 text-xs font-mono rounded border border-transparent hover:border-slate-300 focus:border-indigo-500 focus:bg-white transition ${m.actual ? 'text-emerald-700 font-bold bg-emerald-50/60' : 'text-slate-400 bg-slate-50'}">
             </td>
             <td class="py-3 px-3 text-slate-600">${owner || '-'}</td>
-            <td class="py-3 px-3 text-[11px] text-slate-600 max-w-xs break-words">
-              <div>${deliverable || '-'}</div>
-              ${m.larkUrl ? `
-                <div class="mt-1 flex items-center gap-1.5 flex-wrap">
-                  <a href="${m.larkUrl}" target="_blank" rel="noopener noreferrer" 
-                     class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-700 hover:text-blue-900 border border-blue-200 text-[10px] font-bold transition shadow-2xs group"
-                     title="${currentLang === 'ja' ? '新しいタブでLarkオンラインドキュメントを開く' : '在新标签页中打开 Lark 在线协同文档'}">
-                    <span class="text-blue-500 group-hover:scale-110 transition">🔗</span>
-                    <span>${currentLang === 'ja' ? 'Lark文書' : 'Lark文档'}</span>
-                    <span class="text-[9px] opacity-70">↗</span>
-                  </a>
-                  <button type="button" onclick="quickBindLarkUrl(${idx})" 
-                          class="text-[10px] text-slate-400 hover:text-blue-600 px-1 py-0.5 hover:bg-slate-100 rounded transition" 
-                          title="${currentLang === 'ja' ? 'リンク編集' : '修改 Lark 链接'}">
-                    ✏️
-                  </button>
-                </div>
-              ` : `
-                <div class="mt-1">
-                  <button type="button" onclick="quickBindLarkUrl(${idx})" 
-                          class="inline-flex items-center gap-1 text-[10px] text-slate-400 hover:text-blue-600 hover:bg-blue-50/60 px-1.5 py-0.5 rounded transition border border-transparent hover:border-blue-200">
-                    <span>+</span><span>${currentLang === 'ja' ? 'Lark連携' : '关联 Lark'}</span>
-                  </button>
-                </div>
+            <td class="py-3 px-3 text-[11px] text-slate-600 max-w-sm break-words">
+              ${isTestReport ? (() => {
+                const reports = p.testReports || [];
+                const passedCount = reports.filter(r => r.status === "passed").length;
+                const totalCount = reports.length;
+
+                let reportBadges = "";
+                reports.slice(0, 3).forEach(r => {
+                  const rNo = r.reportNo || "";
+                  const pointShort = (getLangText(r, "sellingPoint") || "").replace(/^[【\[].*?[】\]]/, "").slice(0, 24);
+                  const isPassed = r.status === "passed";
+                  reportBadges += `
+                    <div class="flex items-center gap-1.5 text-[10px] bg-white border border-amber-200/90 rounded-md px-2 py-0.5 shadow-2xs">
+                      <span class="font-mono font-bold text-slate-800 shrink-0">${rNo}</span>
+                      <span class="text-amber-600 font-bold shrink-0">➔</span>
+                      <span class="text-slate-700 truncate max-w-[190px]" title="${getLangText(r, "sellingPoint")}">${pointShort}</span>
+                      <span class="ml-auto shrink-0 text-[9px] font-bold ${isPassed ? 'text-emerald-600' : 'text-amber-600'}">${isPassed ? '✓' : '⏳'}</span>
+                    </div>
+                  `;
+                });
+                if (totalCount > 3) {
+                  reportBadges += `<div class="text-[9px] text-slate-400 pl-1">+ 另外 ${totalCount - 3} 份实测报告...</div>`;
+                }
+
+                return `
+                  <div class="space-y-1.5">
+                    <div class="flex items-center justify-between gap-1 text-[11px]">
+                      <span class="font-black text-amber-950 flex items-center gap-1">
+                        <span>🧪</span> <span>${currentLang === 'ja' ? '実証試験エビデンス庫' : '实测报告与卖点验证库'}</span>
+                      </span>
+                      <span class="px-2 py-0.2 rounded-full text-[10px] font-mono font-bold bg-amber-100 text-amber-900 border border-amber-200">
+                        ${passedCount}/${totalCount} ${currentLang === 'ja' ? '合格' : '已合格'}
+                      </span>
+                    </div>
+                    <div class="space-y-1">
+                      ${reportBadges || `<div class="text-[11px] text-slate-400">${deliverable || '-'}</div>`}
+                    </div>
+                    <div class="pt-0.5 flex items-center gap-2 flex-wrap">
+                      <button type="button" onclick="openTestReportsModal('${activeProjectId}')" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-black bg-amber-500 hover:bg-amber-600 text-white shadow-2xs transition">
+                        <span>🔬</span> <span>${currentLang === 'ja' ? '試験報告・訴求点を管理' : '管理实测与卖点清单'} (${totalCount} 份)</span>
+                      </button>
+                      ${m.larkUrl ? `
+                        <a href="${m.larkUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-0.5 text-[10px] text-blue-600 hover:underline">
+                          <span>🔗 Lark</span> <span>↗</span>
+                        </a>
+                      ` : ''}
+                    </div>
+                  </div>
+                `;
+              })() : `
+                <div>${deliverable || '-'}</div>
+                ${m.larkUrl ? `
+                  <div class="mt-1 flex items-center gap-1.5 flex-wrap">
+                    <a href="${m.larkUrl}" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-700 hover:text-blue-900 border border-blue-200 text-[10px] font-bold transition shadow-2xs group"
+                       title="${currentLang === 'ja' ? '新しいタブでLarkオンラインドキュメントを開く' : '在新标签页中打开 Lark 在线协同文档'}">
+                      <span class="text-blue-500 group-hover:scale-110 transition">🔗</span>
+                      <span>${currentLang === 'ja' ? 'Lark文書' : 'Lark文档'}</span>
+                      <span class="text-[9px] opacity-70">↗</span>
+                    </a>
+                    <button type="button" onclick="quickBindLarkUrl(${idx})" 
+                            class="text-[10px] text-slate-400 hover:text-blue-600 px-1 py-0.5 hover:bg-slate-100 rounded transition" 
+                            title="${currentLang === 'ja' ? 'リンク編集' : '修改 Lark 链接'}">
+                      ✏️
+                    </button>
+                  </div>
+                ` : `
+                  <div class="mt-1">
+                    <button type="button" onclick="quickBindLarkUrl(${idx})" 
+                            class="inline-flex items-center gap-1 text-[10px] text-slate-400 hover:text-blue-600 hover:bg-blue-50/60 px-1.5 py-0.5 rounded transition border border-transparent hover:border-blue-200">
+                      <span>+</span><span>${currentLang === 'ja' ? 'Lark連携' : '关联 Lark'}</span>
+                    </button>
+                  </div>
+                `}
               `}
             </td>
             <td class="py-3 px-3 text-center whitespace-nowrap space-x-1">
@@ -6540,6 +6776,648 @@ ${isJa ? d.subtitle_ja : d.subtitle_zh}
       closePackagingDielineModal();
     }
 
+
+
+    
+    // ==============================================================
+    // 实测报告与卖点宣传验证中心 (Test Reports & Selling Points Matrix Engine)
+    // ==============================================================
+    let currentTestReportsFilter = "all";
+
+    function isTestReportMilestone(m) {
+      if (!m) return false;
+      const stage = (m.stage_zh || m.stage || "").toLowerCase();
+      const name = (m.name_zh || m.name || "").toLowerCase();
+      const stageJa = (m.stage_ja || "").toLowerCase();
+      const nameJa = (m.name_ja || "").toLowerCase();
+      return stage.includes("测试报告") || stage.includes("试验报告") || stageJa.includes("試験報告") ||
+             name.includes("测试报告") || name.includes("试验报告") || nameJa.includes("試験報告") ||
+             name.includes("实测报告") || nameJa.includes("実測報告");
+    }
+
+    function getInitialTestReportsData(pid) {
+      if (pid === "ignic_sp_bc122_127") {
+        return [
+          {
+            id: "rep_bc_q2026083",
+            reportNo: "Q2026083",
+            reportName: "IP65 级全天候防水防尘与户外淋雨实测报告",
+            reportName_zh: "IP65 级全天候防水防尘与户外淋雨实测报告",
+            reportName_ja: "IP65 等級全天候防水防塵・豪雨噴流検証試験報告書",
+            sellingPoint: "【全天候安心充电】IP65 工业级防水防尘，洗车防淋、户外暴雨无漏电进水风险",
+            sellingPoint_zh: "【全天候安心充电】IP65 工业级防水防尘，洗车防淋、户外暴雨无漏电进水风险",
+            sellingPoint_ja: "【全天候安心・洗車対応】IP65防水防塵規格認証、屋外豪雨や水洗いでも漏電・ショートなし",
+            lab: "易力科工厂硬件可靠性实验室 (Henca Lab)",
+            lab_zh: "易力科工厂硬件可靠性实验室 (Henca Lab)",
+            lab_ja: "易力科ハードウェア信頼性試験室 (Henca Lab)",
+            keyData: "高压持续强力喷淋 30 分钟机壳密封胶圈内部零渗水，电气绝缘阻抗 > 100MΩ，顺利通过检验",
+            keyData_zh: "高压持续强力喷淋 30 分钟机壳密封胶圈内部零渗水，电气绝缘阻抗 > 100MΩ，顺利通过检验",
+            keyData_ja: "高圧放水30分間実施、内部浸水ゼロ。絶縁抵抗100MΩ以上で合格",
+            status: "passed",
+            date: "2026/11/04",
+            larkUrl: "https://mitsukin.sg.larksuite.com/",
+            lpAdopted: true
+          },
+          {
+            id: "rep_bc_q2026082",
+            reportNo: "Q2026082",
+            reportName: "Type-C 移动电源应急补电自救实测报告 (0V完全放电车)",
+            reportName_zh: "Type-C 移动电源应急补电自救实测报告 (0V完全放电车)",
+            reportName_ja: "Type-C モバイルバッテリー緊急補電・自力始動実証報告書",
+            sellingPoint: "【行业首创无插座自救】无市电插座也能救急！10000mAh 充电宝 30 分钟即可自力点火启动",
+            sellingPoint_zh: "【行业首创无插座自救】无市电插座也能救急！10000mAh 充电宝 30 分钟即可自力点火启动",
+            sellingPoint_ja: "【業界初・電源なし緊急自救】コンセント不要！手持ちモバイルバッテリー30分補電でエンジン自力再始動",
+            lab: "三金技术企划 × 易力科联合实测组",
+            lab_zh: "三金技术企划 × 易力科联合实测组",
+            lab_ja: "三金企画 × 易力科合同実車評価チーム",
+            keyData: "马自达 CX-5 铅酸蓄电池完全放电至 0V，接入 10000mAh PD 移动电源持续补电 32 分钟，累计输入 2.7Ah，自力一键着车成功",
+            keyData_zh: "马自达 CX-5 铅酸蓄电池完全放电至 0V，接入 10000mAh PD 移动电源持续补电 32 分钟，累计输入 2.7Ah，自力一键着车成功",
+            keyData_ja: "マツダ CX-5 完全放電バッテリー(0V)に10000mAh給電32分(2.7Ah蓄電)、自力一発始動成功",
+            status: "passed",
+            date: "2026/11/05",
+            larkUrl: "https://mitsukin.sg.larksuite.com/",
+            lpAdopted: true
+          },
+          {
+            id: "rep_bc_q2026088",
+            reportNo: "Q2026088",
+            reportName: "3 车型全工况实车充电与电压适配极限对比实测报告",
+            reportName_zh: "3 车型全工况实车充电与电压适配极限对比实测报告",
+            reportName_ja: "二輪・乗用車・HV SUV 3車種実車充電適合試験報告書",
+            sellingPoint: "【一机通吃全车种】兼容摩托车、小轿车、油电混动 SUV 等 12V 铅酸与磷酸铁锂电池",
+            sellingPoint_zh: "【一机通吃全车种】兼容摩托车、小轿车、油电混动 SUV 等 12V 铅酸与磷酸铁锂电池",
+            sellingPoint_ja: "【全車種対応】バイク・軽・セダン・ハイブリッドSUVまで12V鉛＆リン酸鉄リチウム全網羅",
+            lab: "三金企划实车道路环境实测组",
+            lab_zh: "三金企划实车道路环境实测组",
+            lab_ja: "三金国内実車フィールドテスト班",
+            keyData: "完成本田 CB400（摩托）、丰田卡罗拉（小轿车）、日产奇骏 e-Power（混动SUV）三车实测，智能自动识别电池容量与最佳电流，温升稳定在 42℃ 以下",
+            keyData_zh: "完成本田 CB400（摩托）、丰田卡罗拉（小轿车）、日产奇骏 e-Power（混动SUV）三车实测，智能自动识别电池容量与最佳电流，温升稳定在 42℃ 以下",
+            keyData_ja: "ホンダCB400、トヨタカローラ、日産エクストレイルe-Powerで実証。最高温度42℃以下で安定推移",
+            status: "passed",
+            date: "2026/11/06",
+            larkUrl: "",
+            lpAdopted: true
+          },
+          {
+            id: "rep_bc_q2026092",
+            reportNo: "Q2026092",
+            reportName: "8 阶段高频脉冲去硫激活极板实测报告 (硫化老旧蓄电池)",
+            reportName_zh: "8 阶段高频脉冲去硫激活极板实测报告 (硫化老旧蓄电池)",
+            reportName_ja: "8ステップ高周波パルス脱硫・電極板再生修復試験報告書",
+            sellingPoint: "【旧电瓶起死回生】5/8 阶段高频智能脉冲共振击碎硫酸铅晶体，恢复蓄电池冷启动容量",
+            sellingPoint_zh: "【旧电瓶起死回生】5/8 阶段高频智能脉冲共振击碎硫酸铅晶体，恢复蓄电池冷启动容量",
+            sellingPoint_ja: "【劣化したバッテリー復活】5/8段階パルス充電で結晶化サルフェーションを強力分解・通電改善",
+            lab: "易力科工厂电化学实验室",
+            lab_zh: "易力科工厂电化学实验室",
+            lab_ja: "易力科工場電気化学ラボ",
+            keyData: "重度硫化废旧 12V 蓄电池连续高频脉冲修复 6 小时后，内阻由 28mΩ 下降至 18mΩ（降低 35.7%），CCA 恢复至标称的 82%",
+            keyData_zh: "重度硫化废旧 12V 蓄电池连续高频脉冲修复 6 小时后，内阻由 28mΩ 下降至 18mΩ（降低 35.7%），CCA 恢复至标称的 82%",
+            keyData_ja: "劣化鉛バッテリーに高周波パルス修復6時間実施、内部抵抗35.7%低減、CCA性能82%まで回復",
+            status: "in_progress",
+            date: "2026/11/12",
+            larkUrl: "",
+            lpAdopted: false
+          }
+        ];
+      } else if (pid === "ignic_ce211") {
+        return [
+          {
+            id: "rep_ce_01",
+            reportNo: "CE-2026-T01",
+            reportName: "-20℃ 极低温冷库大排量瞬间打火实测报告",
+            sellingPoint: "【极寒秒启】耐受 -20℃ 极低温，瞬间爆发 1200A 峰值电流一触即发",
+            lab: "三金北方寒区实车测试基地",
+            keyData: "在 -20℃ 恒温冷库中浸冷 24 小时后，对 3.5L 丰田普拉多进行冷启动，瞬间峰值电流达 1240A，一秒点火启动成功",
+            status: "passed",
+            date: "2026/10/28",
+            larkUrl: "",
+            lpAdopted: true
+          },
+          {
+            id: "rep_ce_02",
+            reportNo: "CE-2026-T02",
+            reportName: "智能防反接防火花夹保护回路耐压与误操作实测报告",
+            sellingPoint: "【小白防呆】正负极接反瞬间自动断电保护，零火花零毁车",
+            lab: "工厂安全防护评测实验室",
+            keyData: "进行 50 次带电极性反接极限实验，保护模块在 0.02ms 内截断回路，外壳零发热，蜂鸣报警器准确响鸣",
+            status: "in_progress",
+            date: "2026/11/10",
+            larkUrl: "",
+            lpAdopted: false
+          }
+        ];
+      } else if (pid === "hwc2_seat") {
+        return [
+          {
+            id: "rep_hwc_01",
+            reportNo: "HWC2-T01",
+            reportName: "半导体制冷片 10 秒极速降温与双温控实测报告",
+            sellingPoint: "【10秒速凉】半导体高能效强制降温，后背屁股告别夏日闷热汗渍",
+            lab: "车载热管理实验室",
+            keyData: "环境温度 38℃ 暴晒车内，开启制冷 10 秒后接触面降温达 14.8℃，连续工作 2 小时温度稳定在 22℃",
+            status: "passed",
+            date: "2026/10/20",
+            larkUrl: "",
+            lpAdopted: true
+          },
+          {
+            id: "rep_hwc_02",
+            reportNo: "HWC2-T02",
+            reportName: "石墨烯远红外恒温发热与车规阻燃安全性实测报告",
+            sellingPoint: "【恒温安全】3秒速热，整车级阻燃耐磨科技面料",
+            lab: "汽车内饰阻燃检验中心",
+            keyData: "石墨烯片 3 秒内升温至设定 45℃，离火自熄阻燃试验符合 FMVSS 302 车规级阻燃规范",
+            status: "in_progress",
+            date: "2026/11/15",
+            larkUrl: "",
+            lpAdopted: false
+          }
+        ];
+      } else if (pid === "ignic_sp_bc1210") {
+        return [
+          {
+            id: "rep_bc10_01",
+            reportNo: "BC10-T01",
+            reportName: "10A 持续大电流满载温升与智能风扇静音实测报告",
+            sellingPoint: "【10A疾速充】大功率智能恒流快充，温控滚珠风扇静音稳定输出",
+            lab: "易力科工厂硬件实验室",
+            keyData: "10A 满载持续运行 12 小时，内部变压器最高温度 68℃（远低于安全阈值 105℃），风噪低于 38dB",
+            status: "in_progress",
+            date: "2026/11/18",
+            larkUrl: "",
+            lpAdopted: false
+          },
+          {
+            id: "rep_bc10_02",
+            reportNo: "BC10-T02",
+            reportName: "房车 200Ah 大型副电瓶深度循环维护实测报告",
+            sellingPoint: "【房车大电瓶专用】支持高达 200Ah 房车蓄电池，长期插电免维护",
+            lab: "户外电源技术研发组",
+            keyData: "接入 200Ah 房车副电瓶持续浮充测试 7 天，过充保护自动切断，浮充电压稳定在 13.8V 恒压状态",
+            status: "pending",
+            date: "2026/11/25",
+            larkUrl: "",
+            lpAdopted: false
+          }
+        ];
+      }
+      return [
+        {
+          id: "rep_default_01",
+          reportNo: "TR-2026-001",
+          reportName: "核心功能与规格参数出厂合格验证报告",
+          sellingPoint: "【品质基石】严苛出厂测试，确保每一台产品指标 100% 达标",
+          lab: "工厂质检中心",
+          keyData: "全项电气参数、耐压、功耗测试通过，不良率为 0",
+          status: "passed",
+          date: "2026/11/01",
+          larkUrl: "",
+          lpAdopted: true
+        }
+      ];
+    }
+
+    function syncTestReportsToMilestoneDeliverable(p) {
+      if (!p || !p.milestones) return;
+      const m = p.milestones.find(item => isTestReportMilestone(item));
+      if (!m) return;
+      const reports = p.testReports || [];
+      const passedCount = reports.filter(r => r.status === "passed").length;
+      const totalCount = reports.length;
+      if (totalCount === 0) return;
+
+      const topNos = reports.slice(0, 3).map(r => r.reportNo).join("+");
+      const summaryZh = `共 ${totalCount} 份实测报告(${topNos}${totalCount > 3 ? '等' : ''})，覆盖 ${totalCount} 项宣传卖点`;
+      const summaryJa = `実測報告書計${totalCount}件(${topNos}${totalCount > 3 ? '等' : ''})、${totalCount}大訴求点をエビデンス実証済`;
+      
+      m.deliverable_zh = summaryZh;
+      m.deliverable_ja = summaryJa;
+      m.deliverable = currentLang === "ja" ? summaryJa : summaryZh;
+    }
+
+    function openTestReportsModal(projId) {
+      const pid = projId || activeProjectId;
+      if (!pid) return;
+      activeProjectId = pid;
+      const p = pmsData[pid];
+      if (!p) return;
+
+      if (!p.testReports || !Array.isArray(p.testReports) || p.testReports.length === 0) {
+        p.testReports = getInitialTestReportsData(pid);
+        syncTestReportsToMilestoneDeliverable(p);
+        savePMSData();
+      }
+
+      const isJa = currentLang === "ja";
+      const pName = getLangText(p, "name");
+
+      const titleEl = document.getElementById("testReportsModalTitle");
+      if (titleEl) {
+        titleEl.innerText = `${pName} ・ ${isJa ? '実測試験報告＆販売訴求点エビデンスセンター' : '实测报告与卖点宣传验证中心'}`;
+      }
+
+      currentTestReportsFilter = "all";
+      toggleAddTestReportForm(false);
+      renderTestReportsModalContent();
+
+      const modal = document.getElementById("testReportsModal");
+      if (modal) modal.classList.remove("hidden");
+    }
+
+    function closeTestReportsModal() {
+      const modal = document.getElementById("testReportsModal");
+      if (modal) modal.classList.add("hidden");
+      renderDetailTable();
+      const p = pmsData[activeProjectId];
+      if (p) renderCurrentStageFocusSection(p);
+      renderHubCards();
+    }
+
+    function setTestReportsFilter(filter) {
+      currentTestReportsFilter = filter || "all";
+      const btnAll = document.getElementById("btnTrFilterAll");
+      const btnPassed = document.getElementById("btnTrFilterPassed");
+      const btnOngoing = document.getElementById("btnTrFilterOngoing");
+
+      const activeClass = "px-3 py-1.5 rounded-xl font-bold bg-indigo-600 text-white transition shadow-2xs";
+      const inactiveClass = "px-3 py-1.5 rounded-xl font-bold text-slate-600 hover:bg-slate-200/60 transition";
+
+      if (btnAll) btnAll.className = filter === "all" ? activeClass : inactiveClass;
+      if (btnPassed) btnPassed.className = filter === "passed" ? activeClass : inactiveClass;
+      if (btnOngoing) btnOngoing.className = filter === "ongoing" ? activeClass : inactiveClass;
+
+      renderTestReportsModalContent();
+    }
+
+    function toggleAddTestReportForm(forceState, editId) {
+      const card = document.getElementById("testReportFormCard");
+      if (!card) return;
+      const isJa = currentLang === "ja";
+
+      if (forceState === false) {
+        card.classList.add("hidden");
+        return;
+      }
+
+      const isOpening = forceState === true || card.classList.contains("hidden");
+      if (!isOpening) {
+        card.classList.add("hidden");
+        return;
+      }
+
+      card.classList.remove("hidden");
+      const p = pmsData[activeProjectId];
+      const reports = p ? (p.testReports || []) : [];
+
+      if (editId) {
+        const item = reports.find(r => r.id === editId);
+        if (item) {
+          document.getElementById("trEditId").value = item.id;
+          document.getElementById("trInputNo").value = item.reportNo || "";
+          document.getElementById("trInputLab").value = getLangText(item, "lab") || item.lab || "";
+          document.getElementById("trInputDate").value = item.date || "";
+          document.getElementById("trInputStatus").value = item.status || "passed";
+          document.getElementById("trInputName").value = getLangText(item, "reportName") || item.reportName || "";
+          document.getElementById("trInputPoint").value = getLangText(item, "sellingPoint") || item.sellingPoint || "";
+          document.getElementById("trInputKeyData").value = getLangText(item, "keyData") || item.keyData || "";
+          document.getElementById("trInputLarkUrl").value = item.larkUrl || "";
+          document.getElementById("trInputLpAdopted").checked = !!item.lpAdopted;
+          document.getElementById("trFormCardTitle").innerHTML = `<span>✏️</span> <span>${isJa ? '実測報告＆訴求点の編集' : '编辑实测报告与卖点验证项'} (${item.reportNo || ''})</span>`;
+          document.getElementById("trInputNo").focus();
+          return;
+        }
+      }
+
+      // New empty form
+      document.getElementById("trEditId").value = "";
+      document.getElementById("trInputNo").value = "";
+      document.getElementById("trInputLab").value = "易力科工厂硬件实验室 (Henca Lab)";
+      document.getElementById("trInputDate").value = new Date().toISOString().slice(0, 10).replace(/-/g, "/");
+      document.getElementById("trInputStatus").value = "passed";
+      document.getElementById("trInputName").value = "";
+      document.getElementById("trInputPoint").value = "";
+      document.getElementById("trInputKeyData").value = "";
+      document.getElementById("trInputLarkUrl").value = "";
+      document.getElementById("trInputLpAdopted").checked = true;
+      document.getElementById("trFormCardTitle").innerHTML = `<span>📝</span> <span>${isJa ? '新規実測試験報告＆訴求点エビデンスの登録' : '录入新实测报告与卖点验证项'}</span>`;
+      document.getElementById("trInputNo").focus();
+    }
+
+    function saveTestReportItem() {
+      const isJa = currentLang === "ja";
+      const p = pmsData[activeProjectId];
+      if (!p) return;
+      if (!p.testReports) p.testReports = [];
+
+      const editId = document.getElementById("trEditId").value;
+      const reportNo = document.getElementById("trInputNo").value.trim();
+      const lab = document.getElementById("trInputLab").value.trim();
+      const date = document.getElementById("trInputDate").value.trim();
+      const status = document.getElementById("trInputStatus").value;
+      const reportName = document.getElementById("trInputName").value.trim();
+      const sellingPoint = document.getElementById("trInputPoint").value.trim();
+      const keyData = document.getElementById("trInputKeyData").value.trim();
+      const larkUrl = document.getElementById("trInputLarkUrl").value.trim();
+      const lpAdopted = document.getElementById("trInputLpAdopted").checked;
+
+      if (!reportNo) {
+        alert(isJa ? "試験報告書の管理番号（ロットNo）を入力してください。" : "请输入测试报告编号/批次（如 Q2026083）！");
+        document.getElementById("trInputNo").focus();
+        return;
+      }
+      if (!reportName) {
+        alert(isJa ? "試験報告書の名称を入力してください。" : "请输入测试报告全称！");
+        document.getElementById("trInputName").focus();
+        return;
+      }
+      if (!sellingPoint) {
+        alert(isJa ? "この報告書が実証・裏付けする【販売訴求点】を入力してください。" : "请输入本报告验证的核心宣传卖点！这是详情页文案与实测证据的核心对应。");
+        document.getElementById("trInputPoint").focus();
+        return;
+      }
+
+      if (editId) {
+        const item = p.testReports.find(r => r.id === editId);
+        if (item) {
+          item.reportNo = reportNo;
+          item.lab = lab;
+          item.date = date;
+          item.status = status;
+          item.reportName = reportName;
+          item.sellingPoint = sellingPoint;
+          item.keyData = keyData;
+          item.larkUrl = larkUrl;
+          item.lpAdopted = lpAdopted;
+          if (isJa) {
+            item.reportName_ja = reportName;
+            item.sellingPoint_ja = sellingPoint;
+            item.lab_ja = lab;
+            item.keyData_ja = keyData;
+          } else {
+            item.reportName_zh = reportName;
+            item.sellingPoint_zh = sellingPoint;
+            item.lab_zh = lab;
+            item.keyData_zh = keyData;
+          }
+        }
+      } else {
+        const newItem = {
+          id: "rep_" + Date.now(),
+          reportNo,
+          reportName,
+          reportName_zh: reportName,
+          reportName_ja: reportName,
+          sellingPoint,
+          sellingPoint_zh: sellingPoint,
+          sellingPoint_ja: sellingPoint,
+          lab,
+          lab_zh: lab,
+          lab_ja: lab,
+          keyData,
+          keyData_zh: keyData,
+          keyData_ja: keyData,
+          status,
+          date,
+          larkUrl,
+          lpAdopted
+        };
+        p.testReports.unshift(newItem);
+      }
+
+      syncTestReportsToMilestoneDeliverable(p);
+      savePMSData();
+      toggleAddTestReportForm(false);
+      renderTestReportsModalContent();
+      renderDetailTable();
+      renderCurrentStageFocusSection(p);
+    }
+
+    function deleteTestReportItem(repId) {
+      const isJa = currentLang === "ja";
+      const p = pmsData[activeProjectId];
+      if (!p || !p.testReports) return;
+
+      const item = p.testReports.find(r => r.id === repId);
+      const repName = item ? (item.reportNo + " " + (item.reportName || "")) : "";
+      if (!confirm(isJa ? `試験報告【${repName}】を削除してもよろしいですか？` : `确定删除实测报告【${repName}】及对应的卖点验证吗？`)) {
+        return;
+      }
+
+      p.testReports = p.testReports.filter(r => r.id !== repId);
+      syncTestReportsToMilestoneDeliverable(p);
+      savePMSData();
+      renderTestReportsModalContent();
+      renderDetailTable();
+      renderCurrentStageFocusSection(p);
+    }
+
+    function copyTestReportsEvidenceSummary() {
+      const isJa = currentLang === "ja";
+      const p = pmsData[activeProjectId];
+      if (!p) return;
+      const reports = p.testReports || [];
+      if (reports.length === 0) {
+        alert(isJa ? "登録されている実測報告書はありません。" : "当前尚未录入任何实测报告！");
+        return;
+      }
+
+      const pName = getLangText(p, "name");
+      const passedCount = reports.filter(r => r.status === "passed").length;
+      let text = `========================================\n`;
+      text += isJa 
+        ? `【三金商事・製品実証試験報告＆訴求点エビデンス一覧】\n` 
+        : `【三金商事・产品研发实测报告与核心卖点证据流矩阵】\n`;
+      text += isJa 
+        ? `対象製品: ${pName}\n` 
+        : `对应产品: ${pName}\n`;
+      text += isJa
+        ? `実測報告総数: ${reports.length}件 (合格済: ${passedCount}件)\n`
+        : `实测报告总数: ${reports.length} 份 (合格已出具: ${passedCount} 份)\n`;
+      text += `========================================\n\n`;
+
+      reports.forEach((r, idx) => {
+        const no = r.reportNo || ("#" + (idx + 1));
+        const name = getLangText(r, "reportName");
+        const point = getLangText(r, "sellingPoint");
+        const data = getLangText(r, "keyData");
+        const lab = getLangText(r, "lab");
+        const statusText = r.status === "passed" ? (isJa ? "合格・エビデンス確定" : "✅ 已出具·合格通过") : (isJa ? "検証中・データ待ち" : "⏳ 测试中·待工厂提供");
+
+        text += `[${idx + 1}] ${no} ${name}\n`;
+        text += `  🎯 ${isJa ? '実証する訴求点' : '支撑宣传卖点'}: ${point}\n`;
+        if (data) text += `  🔬 ${isJa ? '実測データ結論' : '实测核心数据'}: ${data}\n`;
+        if (lab) text += `  🏢 ${isJa ? '試験実施機関' : '出具实验室'}: ${lab}\n`;
+        text += `  📊 ${isJa ? 'ステータス' : '验证状态'}: ${statusText}\n`;
+        if (r.larkUrl) text += `  🔗 ${isJa ? '報告書リンク' : '报告文件链接'}: ${r.larkUrl}\n`;
+        text += `\n`;
+      });
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert(isJa 
+            ? "全実測エビデンス一覧をクリップボードにコピーしました！\nLPデザイナーおよび運用チームへそのまま共有可能です。" 
+            : "已成功复制全套实测证据流清单到剪贴板！\n可直接粘贴在飞书/微信发给美工与运营团队排版详情页。"
+          );
+        }).catch(() => {
+          prompt(isJa ? "以下の内容をコピーしてください：" : "请复制以下内容：", text);
+        });
+      } else {
+        prompt(isJa ? "以下の内容をコピーしてください：" : "请复制以下内容：", text);
+      }
+    }
+
+    function renderTestReportsModalContent() {
+      const isJa = currentLang === "ja";
+      const p = pmsData[activeProjectId];
+      if (!p) return;
+      const reports = p.testReports || [];
+
+      const total = reports.length;
+      const passedCount = reports.filter(r => r.status === "passed").length;
+      const ongoingCount = reports.filter(r => r.status !== "passed").length;
+
+      // Update KPIs
+      const elTotal = document.getElementById("trKpiTotal");
+      const elPassed = document.getElementById("trKpiPassed");
+      const elOngoing = document.getElementById("trKpiOngoing");
+      const elPoints = document.getElementById("trKpiPoints");
+
+      if (elTotal) elTotal.innerText = total;
+      if (elPassed) elPassed.innerText = passedCount;
+      if (elOngoing) elOngoing.innerText = ongoingCount;
+      if (elPoints) elPoints.innerText = total;
+
+      const cAll = document.getElementById("countTrAll");
+      const cPassed = document.getElementById("countTrPassed");
+      const cOngoing = document.getElementById("countTrOngoing");
+      if (cAll) cAll.innerText = total;
+      if (cPassed) cPassed.innerText = passedCount;
+      if (cOngoing) cOngoing.innerText = ongoingCount;
+
+      // Filter list
+      let filtered = reports;
+      if (currentTestReportsFilter === "passed") {
+        filtered = reports.filter(r => r.status === "passed");
+      } else if (currentTestReportsFilter === "ongoing") {
+        filtered = reports.filter(r => r.status !== "passed");
+      }
+
+      const container = document.getElementById("testReportsListContainer");
+      if (!container) return;
+      container.innerHTML = "";
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="py-12 text-center text-slate-400 bg-slate-50/60 rounded-2xl border border-dashed border-slate-200">
+            <div class="text-3xl mb-2">🧪</div>
+            <div class="text-xs font-bold text-slate-600">${isJa ? '条件に一致する実測報告書はありません' : '当前筛选条件下暂无实测报告'}</div>
+            <button onclick="toggleAddTestReportForm(true)" class="mt-3 px-3.5 py-1.5 text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white rounded-xl shadow-xs transition">
+              + ${isJa ? '実測報告を新規登録' : '立即录入新实测报告与卖点'}
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((r, idx) => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-2xl border border-slate-200 p-4 shadow-2xs hover:shadow-md hover:border-amber-300 transition space-y-3";
+
+        const no = r.reportNo || ("#" + (idx + 1));
+        const name = getLangText(r, "reportName");
+        const point = getLangText(r, "sellingPoint");
+        const keyData = getLangText(r, "keyData");
+        const lab = getLangText(r, "lab");
+        const date = r.date || "";
+
+        let statusBadge = "";
+        if (r.status === "passed") {
+          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 border border-emerald-200">✅ ${isJa ? '合格・エビデンス確定' : '已出具・合格通过'}</span>`;
+        } else if (r.status === "in_progress") {
+          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-100 text-amber-800 border border-amber-200 animate-pulse">⏳ ${isJa ? '試験中・工場データ待ち' : '测试中・待工厂出具'}</span>`;
+        } else if (r.status === "pending") {
+          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-slate-100 text-slate-700 border border-slate-200">⏱️ ${isJa ? 'サンプル準備中' : '待送样排期'}</span>`;
+        } else {
+          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-red-100 text-red-800 border border-red-200">❌ ${isJa ? '不合格・再試験要' : '未通过・需整改'}</span>`;
+        }
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3 flex-wrap pb-2 border-b border-slate-100">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900 text-white font-mono font-black text-xs shadow-2xs">
+                ${no}
+              </span>
+              ${statusBadge}
+              ${date ? `<span class="text-[11px] font-mono text-slate-400">📅 ${date}</span>` : ''}
+              ${lab ? `<span class="text-[11px] text-slate-500 font-medium bg-slate-100 px-2 py-0.5 rounded-md">🏢 ${lab}</span>` : ''}
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <button onclick="toggleAddTestReportForm(true, '${r.id}')" class="p-1.5 text-xs text-indigo-600 hover:bg-indigo-50 rounded-lg transition" title="${isJa ? '編集' : '编辑'}">
+                ✏️
+              </button>
+              <button onclick="deleteTestReportItem('${r.id}')" class="p-1.5 text-xs text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition" title="${isJa ? '削除' : '删除'}">
+                🗑️
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <h5 class="text-sm font-black text-slate-900 leading-snug">
+              ${name}
+            </h5>
+          </div>
+
+          <!-- Highlighted Selling Point Box -->
+          <div class="bg-gradient-to-r from-amber-50 to-orange-50/50 border border-amber-200/90 rounded-xl p-3 space-y-1">
+            <div class="text-[10px] font-black tracking-wider text-amber-900 uppercase flex items-center gap-1">
+              <span>🎯</span> <span>${isJa ? '本報告が実証する販売訴求点（Makuake/ECデザインに反映）' : '本报告验证的核心宣传卖点（直接输入至美工详情页）'}</span>
+            </div>
+            <div class="text-xs font-black text-slate-900 leading-relaxed">
+              ${point}
+            </div>
+          </div>
+
+          <!-- Key Test Findings & Conclusion -->
+          ${keyData ? `
+            <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 text-xs text-slate-700 space-y-0.5">
+              <div class="text-[10px] font-bold text-slate-500 flex items-center gap-1">
+                <span>🔬</span> <span>${isJa ? '実測データおよび判定結論' : '关键实测数据与判定结论'}</span>
+              </div>
+              <div class="font-mono text-slate-800 text-[11px] leading-relaxed">
+                ${keyData}
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- Bottom Meta & Lark Link -->
+          <div class="flex items-center justify-between gap-2 flex-wrap pt-1 text-[11px]">
+            <div class="flex items-center gap-2">
+              ${r.lpAdopted ? `
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold">
+                  <span>🎨</span> <span>${isJa ? 'デザインLP採用済' : '美工详情页已采纳呈现'}</span>
+                </span>
+              ` : `
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-slate-500 text-[10px]">
+                  <span>⏳</span> <span>${isJa ? 'LPビジュアル作成待ち' : '待制作视觉实测长图'}</span>
+                </span>
+              `}
+            </div>
+            <div>
+              ${r.larkUrl ? `
+                <a href="${r.larkUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 hover:underline">
+                  <span>🔗</span> <span>${isJa ? 'Lark試験報告書を開く' : '查看 Lark 报告原件'}</span> <span class="text-[10px]">↗</span>
+                </a>
+              ` : `
+                <button type="button" onclick="toggleAddTestReportForm(true, '${r.id}')" class="text-[10px] text-slate-400 hover:text-blue-600 transition">
+                  + ${isJa ? 'Larkリンク登録' : '添加 Lark 报告链接'}
+                </button>
+              `}
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
 
 
     // ================= Lark 在线协同文档关联与跳转引擎 =================
