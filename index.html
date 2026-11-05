@@ -1754,7 +1754,7 @@
 
     // ================= Data Store & System Version Lifecycle =================
     // Whenever a new system generation is released, update SYSTEM_VERSION to auto-purge legacy stored data
-    const SYSTEM_VERSION = "v19_reorder_po_kol_and_packaging";
+    const SYSTEM_VERSION = "v20_restored_all_projects_and_owners";
     const VERSION_STORAGE_KEY = "mitsukin_pms_current_system_version";
     const STORAGE_KEY = "mitsukin_pms_projects_" + SYSTEM_VERSION;
     const ORDER_STORAGE_KEY = "mitsukin_pms_project_order_" + SYSTEM_VERSION;
@@ -1870,6 +1870,12 @@
       if (saved) {
         try {
           pmsData = JSON.parse(saved);
+          // Safety check: ensure all 4 default projects exist even if previously missing
+          Object.keys(initialRealProducts).forEach(k => {
+            if (!pmsData[k]) {
+              pmsData[k] = JSON.parse(JSON.stringify(initialRealProducts[k]));
+            }
+          });
           // Safety check: ensure multi-SKU architecture is populated for ignic_sp_bc122_127
           if (pmsData["ignic_sp_bc122_127"] && (!pmsData["ignic_sp_bc122_127"].stage1Research || !pmsData["ignic_sp_bc122_127"].stage1Research.skus || pmsData["ignic_sp_bc122_127"].stage1Research.skus.length < 2)) {
             pmsData["ignic_sp_bc122_127"].stage1Research = getInitialStage1ResearchData("ignic_sp_bc122_127");
@@ -1943,10 +1949,15 @@
         if (res.ok) {
           const cloudData = await res.json();
           if (cloudData && typeof cloudData === "object" && Object.keys(cloudData).length > 0) {
+            // Merge cloudData with initialRealProducts to ensure no products missing
+            Object.keys(initialRealProducts).forEach(k => {
+              if (!cloudData[k]) {
+                cloudData[k] = JSON.parse(JSON.stringify(initialRealProducts[k]));
+              }
+            });
             pmsData = cloudData;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(pmsData));
             renderAll();
-      fetchCloudDataOnStartup();
             updateCloudBadge("synced");
           }
         }
